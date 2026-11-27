@@ -1,9 +1,11 @@
 /* Library view (a second layout in the same window). Monochrome, light by default, .lib-dark for dark. */
 body {
   --l-bg: #ececec; --l-panel: #ffffff; --l-fg: #111111; --l-mute: #b9b9b9; --l-soft: #6d6d6d; --l-line: #d6d6d6;
+  --l-pool: rgba(255,255,255,.9); --l-pool2: rgba(190,200,230,.35);
 }
 body.lib-dark {
-  --l-bg: #111111; --l-panel: #1c1c1c; --l-fg: #f2f2f2; --l-mute: #4a4a4a; --l-soft: #9a9a9a; --l-line: #2d2d2d;
+  --l-bg: #0e0f12; --l-panel: #1a1c21; --l-fg: #f2f2f2; --l-mute: #4a4a4a; --l-soft: #9a9a9a; --l-line: #2a2c33;
+  --l-pool: rgba(122,92,255,.14); --l-pool2: rgba(57,243,255,.08);
 }
 body:not([data-view=library]) .library { display: none; }
 body[data-view=library] .shell { display: none; }
@@ -11,7 +13,15 @@ body[data-view=library] .shell { display: none; }
 .library {
   position: absolute; inset: 10px; border-radius: 24px; overflow: hidden;
   display: grid; grid-template-columns: 72px 500px 1fr; grid-template-rows: 70px 1fr;
-  background: var(--l-bg); color: var(--l-fg);
+  /* layers: grain, fine grid, soft light pools, base colour */
+  background:
+    var(--noise),
+    linear-gradient(color-mix(in srgb, var(--l-fg) 4%, transparent) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(90deg, color-mix(in srgb, var(--l-fg) 4%, transparent) 1px, transparent 1px) 0 0 / 28px 28px,
+    radial-gradient(ellipse 50% 60% at 25% 45%, var(--l-pool), transparent 70%),
+    radial-gradient(ellipse 45% 50% at 85% 10%, var(--l-pool2), transparent 70%),
+    var(--l-bg);
+  color: var(--l-fg);
   font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   box-shadow: 0 0 0 1px rgba(0,0,0,.25), 0 10px 24px rgba(0,0,0,.35);
   transition: background .25s, color .25s;
@@ -134,6 +144,11 @@ button.chip:hover:not(.dark) { background: color-mix(in srgb, var(--l-fg) 10%, t
 .lib-play.on .i-pause { display: block; stroke-width: 3.2; }
 
 /* ---------- browse column ---------- */
+.tracks {
+  background: color-mix(in srgb, var(--l-panel) 55%, transparent);
+  border-radius: 16px; padding: 6px;
+  box-shadow: 0 0 0 1px var(--l-line), 0 12px 24px rgba(0,0,0,.08), inset 0 1px 0 color-mix(in srgb, #fff 30%, transparent);
+}
 .lib-browse { padding: 4px 24px 20px 10px; display: flex; flex-direction: column; gap: 12px; min-height: 0; min-width: 0; }
 .lib-h2 { font-size: 22px; font-weight: 800; letter-spacing: -.01em; }
 .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px; flex: none; }

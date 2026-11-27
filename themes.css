@@ -399,3 +399,166 @@
 [data-theme=turntable] .knob-inner { background: radial-gradient(circle at 45% 35%, #f2f2f2, #a3a3a3 70%); box-shadow: 0 0 0 1px #6a6a6a, inset 0 1px 2px rgba(255,255,255,.8); }
 [data-theme=turntable] .slit { background: #2a2a2a; }
 [data-theme=turntable] .pointer { background: var(--red); }
+
+/* =====================================================================
+   NOVA — futuristic: carbon shell, holographic edge, floating glass, HUD
+   ===================================================================== */
+@property --holo { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+@keyframes holo { to { --holo: 360deg; } }
+
+[data-theme=nova] {
+  --a: #39f3ff; --b: #ff3df2; --c: #7a5cff;
+  --ink: #cfe9ff; --ink-soft: #6f90b4;
+  --lcd-hi: #081627; --lcd: #050e1a; --lcd-lo: #02060c;
+  --seg: #7ef8ff; --glow: rgba(57,243,255,.8); --red: #ff3df2;
+  --holo-ring: conic-gradient(from var(--holo), #39f3ff, #7a5cff, #ff3df2, #ffd36b, #39f3ff);
+  --glass: linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,.025) 40%, rgba(120,170,255,.04));
+  --glass-edge: 0 0 0 1px rgba(150,210,255,.20), inset 0 1px 0 rgba(255,255,255,.18), inset 0 -1px 0 rgba(0,0,0,.4);
+  /* HUD corner brackets as 8 thin gradient strokes */
+  --brackets:
+    linear-gradient(var(--a), var(--a)) left 6px top 6px / 12px 1.5px no-repeat,
+    linear-gradient(var(--a), var(--a)) left 6px top 6px / 1.5px 12px no-repeat,
+    linear-gradient(var(--a), var(--a)) right 6px top 6px / 12px 1.5px no-repeat,
+    linear-gradient(var(--a), var(--a)) right 6px top 6px / 1.5px 12px no-repeat,
+    linear-gradient(var(--a), var(--a)) left 6px bottom 6px / 12px 1.5px no-repeat,
+    linear-gradient(var(--a), var(--a)) left 6px bottom 6px / 1.5px 12px no-repeat,
+    linear-gradient(var(--a), var(--a)) right 6px bottom 6px / 12px 1.5px no-repeat,
+    linear-gradient(var(--a), var(--a)) right 6px bottom 6px / 1.5px 12px no-repeat;
+  --pumpglow: calc((var(--pump, 1) - 1) * 260px);
+}
+[data-theme=nova] .print, [data-theme=nova] .top-labels, [data-theme=nova] .key-labels { letter-spacing: .22em; }
+
+/* shell: carbon fibre weave inside a rotating holographic rim */
+[data-theme=nova] .shell {
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(27deg, #0f1115 5px, transparent 5px) 0 5px / 20px 20px padding-box,
+    linear-gradient(207deg, #0f1115 5px, transparent 5px) 10px 0 / 20px 20px padding-box,
+    linear-gradient(27deg, #1b1e24 5px, transparent 5px) 0 10px / 20px 20px padding-box,
+    linear-gradient(207deg, #1b1e24 5px, transparent 5px) 10px 5px / 20px 20px padding-box,
+    linear-gradient(90deg, #15181d 10px, transparent 10px) 0 0 / 20px 20px padding-box,
+    linear-gradient(#171a20 25%, #13161b 25%, #13161b 50%, transparent 50%, transparent 75%, #1e2128 75%, #1e2128) 0 0 / 20px 20px padding-box,
+    linear-gradient(#101217, #101217) padding-box,
+    var(--holo-ring) border-box;
+  animation: holo 10s linear infinite;
+  box-shadow: 0 0 24px rgba(57,243,255,.18), 0 0 40px rgba(255,61,242,.10), 0 16px 30px rgba(0,0,0,.6);
+}
+/* body: deep glass with nebula light, grid and scanline layers */
+[data-theme=nova] .body {
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.022) 0 1px, transparent 1px 4px),
+    linear-gradient(rgba(57,243,255,.05) 1px, transparent 1px) 0 0 / 22px 22px,
+    linear-gradient(90deg, rgba(57,243,255,.05) 1px, transparent 1px) 0 0 / 22px 22px,
+    radial-gradient(ellipse 80% 40% at 20% 0%, rgba(122,92,255,.35), transparent 70%),
+    radial-gradient(ellipse 70% 35% at 90% 55%, rgba(255,61,242,.16), transparent 70%),
+    radial-gradient(ellipse 90% 40% at 50% 105%, rgba(57,243,255,.20), transparent 70%),
+    var(--noise),
+    linear-gradient(180deg, rgba(14,20,38,.94), rgba(6,9,20,.97));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.12), inset 0 0 0 1px rgba(120,180,255,.14), inset 0 0 40px rgba(0,0,0,.6);
+}
+[data-theme=nova] .cap.cream.sq, [data-theme=nova] .cap.black.slot { background: var(--glass); box-shadow: var(--glass-edge), 0 4px 8px rgba(0,0,0,.5); }
+[data-theme=nova] .cap.black.slot { box-shadow: var(--glass-edge), inset 0 0 0 1px rgba(57,243,255,.5), 0 0 8px rgba(57,243,255,.3); }
+[data-theme=nova] .cap:active { box-shadow: 0 0 0 1px var(--a), 0 0 10px rgba(57,243,255,.6); }
+[data-theme=nova] .lamp { background: radial-gradient(circle, #1b2b3f, #0a121c); box-shadow: 0 0 0 1.5px rgba(57,243,255,.4); }
+[data-theme=nova] .lamp.on { background: radial-gradient(circle at 40% 35%, #fff, var(--a) 45%, #087a86); box-shadow: 0 0 0 1.5px var(--a), 0 0 14px 4px rgba(57,243,255,.7), 0 0 30px 6px rgba(122,92,255,.4); }
+
+/* floating glass panels */
+[data-theme=nova] .bezel, [data-theme=nova] .plate {
+  background: var(--brackets), var(--glass);
+  box-shadow: var(--glass-edge), 0 14px 26px rgba(0,0,0,.55), 0 0 0 4px rgba(57,243,255,.03);
+}
+[data-theme=nova] .bezel { padding: 10px; border-radius: 14px; }
+[data-theme=nova] .lcd, [data-theme=nova] .scale {
+  background:
+    repeating-linear-gradient(0deg, rgba(126,248,255,.035) 0 1px, transparent 1px 3px),
+    linear-gradient(rgba(57,243,255,.06) 1px, transparent 1px) 0 0 / 16px 16px,
+    linear-gradient(90deg, rgba(57,243,255,.06) 1px, transparent 1px) 0 0 / 16px 16px,
+    radial-gradient(ellipse at 50% 120%, rgba(122,92,255,.25), transparent 60%),
+    linear-gradient(180deg, var(--lcd-hi), var(--lcd) 50%, var(--lcd-lo));
+  text-shadow: 0 0 6px var(--glow), 0 0 18px rgba(57,243,255,.35);
+}
+[data-theme=nova] .lcd {
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px rgba(57,243,255,.45), 0 0 calc(14px + var(--pumpglow)) rgba(57,243,255,.35), inset 0 0 24px rgba(0,0,0,.7);
+}
+[data-theme=nova] .lcd .glass { background: linear-gradient(160deg, rgba(255,255,255,.08), transparent 35%); }
+[data-theme=nova] .scale { box-shadow: inset 0 0 14px rgba(0,0,0,.6); }
+[data-theme=nova] .scale::after { background: linear-gradient(160deg, rgba(255,255,255,.07), transparent 40%); }
+[data-theme=nova] .ghost { opacity: .07; }
+[data-theme=nova] .cover-wrap { border-radius: 8px; box-shadow: 0 0 0 1px rgba(57,243,255,.6), 0 0 12px rgba(57,243,255,.35); }
+[data-theme=nova] .cover-wrap img { mix-blend-mode: normal; filter: saturate(1.2) contrast(1.05); opacity: .9; }
+[data-theme=nova] .band-fill { background: repeating-linear-gradient(90deg, #000 0 1px, transparent 1px 3px), linear-gradient(90deg, var(--a), var(--c), var(--b)); }
+[data-theme=nova] .needle { background: var(--b); box-shadow: 0 0 8px var(--b); }
+[data-theme=nova] .needle::before { border-top-color: var(--b); }
+[data-theme=nova] .tuner { box-shadow: 0 0 0 1px rgba(57,243,255,.4), 0 0 18px rgba(57,243,255,.12); border-radius: 8px; }
+[data-theme=nova] .cap-block { background: linear-gradient(180deg, rgba(10,22,40,.95), rgba(4,8,16,.98)); color: var(--seg); }
+[data-theme=nova] .cap-block .seg7 { text-shadow: 0 0 8px var(--glow); }
+[data-theme=nova] .cap-block.left { border-right: 1px solid rgba(57,243,255,.3); }
+[data-theme=nova] .cap-block.right { border-left: 1px solid rgba(57,243,255,.3); }
+[data-theme=nova] .tiny-lcd { color: var(--a); }
+[data-theme=nova] .badge, [data-theme=nova] .lib-btn { color: var(--a); border-color: var(--a); text-shadow: 0 0 6px var(--a); }
+[data-theme=nova] .marks i { background: rgba(126,248,255,.4); }
+[data-theme=nova] .marks i.red { background: var(--b); box-shadow: 0 0 6px var(--b); }
+
+/* glass keys with LED strips */
+[data-theme=nova] .keybank { background: transparent; box-shadow: none; gap: 6px; padding: 0; }
+[data-theme=nova] :is(.key, .key.solo, .sqkey) {
+  background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.03) 50%, rgba(255,255,255,.06));
+  box-shadow: var(--glass-edge), 0 6px 12px rgba(0,0,0,.5);
+  border-radius: 8px;
+}
+[data-theme=nova] .key em { top: auto; bottom: 6px; width: 60%; left: 20%; margin: 0; height: 2px; background: rgba(126,248,255,.45); box-shadow: 0 0 4px rgba(57,243,255,.5); }
+[data-theme=nova] .sqkey em { bottom: auto; top: 50%; }
+[data-theme=nova] :is(.key:active, .key.down, .key.solo.down, .sqkey.down) {
+  background: linear-gradient(180deg, rgba(57,243,255,.18), rgba(122,92,255,.10));
+  box-shadow: 0 0 0 1px var(--a), 0 0 14px rgba(57,243,255,.45), inset 0 0 12px rgba(57,243,255,.25);
+}
+[data-theme=nova] .key.down em { background: var(--b); box-shadow: 0 0 8px var(--b), 0 0 2px #fff; }
+
+/* speakers: holographic rings with dot-matrix cores that glow on the bass */
+[data-theme=nova] .spk {
+  position: relative;
+  background: radial-gradient(circle, #050a14 0 54px, transparent 55px), var(--holo-ring);
+  animation: holo 6s linear infinite;
+  box-shadow: 0 0 0 4px rgba(10,16,30,.9), 0 0 0 5px rgba(57,243,255,.25), 0 12px 22px rgba(0,0,0,.6), 0 0 calc(10px + var(--pumpglow)) rgba(122,92,255,.55);
+}
+[data-theme=nova] .spk::after {
+  content: ''; position: absolute; inset: 9px; border-radius: 50%; pointer-events: none;
+  background: repeating-conic-gradient(from 0deg, rgba(57,243,255,.8) 0 6deg, transparent 6deg 20deg);
+  -webkit-mask: radial-gradient(circle, transparent 0 48px, #000 48.5px 50px, transparent 50.5px);
+}
+[data-theme=nova].playing .spk::after { animation: spin 7s linear infinite; }
+[data-theme=nova] .grille {
+  width: 88px; height: 88px;
+  background:
+    radial-gradient(circle, rgba(126,248,255,.9) 0 3px, rgba(57,243,255,.25) 4px 9px, transparent 12px),
+    radial-gradient(circle, rgba(57,243,255,.55) 0 .9px, transparent 1.5px) 0 0 / 5px 5px,
+    radial-gradient(circle, #0c1a33, #050a14 70%);
+  box-shadow: 0 0 0 1px rgba(57,243,255,.35), inset 0 0 calc(10px + var(--pumpglow)) rgba(57,243,255,.5);
+}
+[data-theme=nova] .vu { background: rgba(4,8,16,.9); border-radius: 6px; box-shadow: 0 0 0 1px rgba(57,243,255,.4), inset 0 0 8px rgba(0,0,0,.8); }
+[data-theme=nova] .vu i { background: linear-gradient(0deg, var(--a), var(--c) 60%, var(--b)); box-shadow: 0 0 6px rgba(57,243,255,.6); }
+[data-theme=nova] .screw { background: radial-gradient(circle, var(--a), #0a3a44); box-shadow: 0 0 8px var(--a); }
+[data-theme=nova] .switch { background: var(--glass); box-shadow: var(--glass-edge); border-radius: 9px; }
+[data-theme=nova] .switch span { border-radius: 7px; background: linear-gradient(180deg, var(--a), #0a8a96); box-shadow: 0 0 10px rgba(57,243,255,.7); }
+
+/* knob: LED ring that fills with the volume */
+[data-theme=nova] .knob-well { background: radial-gradient(circle, rgba(4,8,16,.9) 58%, rgba(57,243,255,.08) 64%, transparent 74%); box-shadow: 0 0 0 1px rgba(57,243,255,.25), 0 14px 26px rgba(0,0,0,.55); }
+[data-theme=nova] .knob-scale {
+  clip-path: none;
+  background: conic-gradient(from -135deg, var(--a) 0, var(--c) calc(var(--vol, .7) * 135deg), var(--b) calc(var(--vol, .7) * 270deg), rgba(126,248,255,.12) 0 270deg, transparent 0);
+  -webkit-mask: radial-gradient(circle, transparent 60px, #000 61px 68px, transparent 69px), repeating-conic-gradient(from -135deg, #000 0 9deg, transparent 9deg 13.5deg);
+  -webkit-mask-composite: source-in;
+  filter: drop-shadow(0 0 4px rgba(57,243,255,.8));
+}
+[data-theme=nova] .knob {
+  background: radial-gradient(circle at 45% 30%, rgba(255,255,255,.14), transparent 50%), repeating-conic-gradient(from 0deg, #141a26 0 4deg, #0d121c 4deg 8deg);
+  box-shadow: 0 0 0 1px rgba(150,210,255,.25), 0 10px 20px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.15);
+}
+[data-theme=nova] .knob-inner { background: radial-gradient(circle at 45% 35%, #1b2740, #070b14 70%); box-shadow: 0 0 0 1px rgba(57,243,255,.4), 0 0 12px rgba(57,243,255,.25); }
+[data-theme=nova] .slit { width: 6px; background: linear-gradient(180deg, var(--a), var(--c)); box-shadow: 0 0 8px var(--a); }
+[data-theme=nova] .pointer { background: #fff; box-shadow: 0 0 8px var(--a), 0 0 2px #fff; }
+[data-theme=nova] .glare { mix-blend-mode: screen; background: radial-gradient(circle at calc(50% + var(--tx, 0) * 45%) calc(35% + var(--ty, 0) * 45%), rgba(150,220,255,.10), transparent 45%); }
+@media (prefers-reduced-motion: reduce) {
+  [data-theme=nova] .shell, [data-theme=nova] .spk, [data-theme=nova].playing .spk::after { animation: none; }
+}

@@ -68,7 +68,7 @@ function showTime() {
 }
 
 // Themes live in themes.css as body[data-theme] blocks; 'cream' is the plain style.css look.
-const THEMES = ['cream', 'clear', 'deck', 'graphite', 'silver', 'neon', 'turntable'];
+const THEMES = ['cream', 'nova', 'clear', 'deck', 'graphite', 'silver', 'neon', 'turntable'];
 function setTheme(name, save = true) {
   if (!THEMES.includes(name)) name = 'cream';
   document.body.dataset.theme = name;
@@ -85,6 +85,7 @@ function setVolume(v, save = true) {
   state.volume = Math.min(1, Math.max(0, v));
   audio.volume = state.volume;
   $('knob').style.transform = `rotate(${-135 + state.volume * 270}deg)`;
+  document.documentElement.style.setProperty('--vol', state.volume);
   document.dispatchEvent(new Event('player-volume'));
   $('volRead').textContent = `VOL ${Math.round(state.volume * 100)}`;
   $('volRead').classList.add('show');
@@ -276,6 +277,22 @@ const bars = Array.from({ length: 10 }, () => vu.appendChild(document.createElem
   const bass = (levels[0] + levels[1]) / 2;
   root.setProperty('--pump', 1 + Math.max(0, bass - 0.35) / 0.65 * 0.12);
 })();
+
+// ---------- depth: device leans toward the pointer (CSS reads --tx/--ty in -1..1) ----------
+let tiltFrame = 0;
+document.addEventListener('pointermove', (e) => {
+  if (tiltFrame || document.body.dataset.view === 'library') return;
+  tiltFrame = requestAnimationFrame(() => {
+    tiltFrame = 0;
+    const s = document.documentElement.style;
+    s.setProperty('--tx', (e.clientX / innerWidth * 2 - 1).toFixed(3));
+    s.setProperty('--ty', (e.clientY / innerHeight * 2 - 1).toFixed(3));
+  });
+});
+document.documentElement.addEventListener('pointerleave', () => {
+  document.documentElement.style.setProperty('--tx', 0);
+  document.documentElement.style.setProperty('--ty', 0);
+});
 
 // ---------- start ----------
 (async () => {

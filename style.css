@@ -220,7 +220,7 @@ span.seg7 > span:not(.ghost) { position: relative; }
 .key-labels .solo-l { flex: 0 0 52px; font-size: 7px; letter-spacing: .14em; }
 
 /* ---------- speakers ---------- */
-.label-row { display: flex; justify-content: space-between; padding: 0 10px; font-size: 7.5px; }
+.label-row { display: flex; justify-content: space-between; padding: 0 10px; font-size: 7.5px; position: relative; z-index: 1; }
 .label-row .gap { flex: 1; }
 .label-row.slim { justify-content: center; margin-top: -4px; }
 .speakers { display: grid; grid-template-columns: 1fr 84px 1fr; align-items: center; justify-items: center; margin-top: -4px; }
@@ -301,3 +301,25 @@ body.drop .shell { box-shadow: 0 0 0 3px var(--lcd), 0 14px 26px rgba(0,0,0,.35)
 .blink { animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 [hidden] { display: none !important; }
+
+/* ---------- depth effects (all themes): tilt toward the pointer, layered parallax, glare, glass sweep ---------- */
+.shell { transform: perspective(1400px) rotateX(calc(var(--ty, 0) * -3deg)) rotateY(calc(var(--tx, 0) * 4deg)); transition: transform .3s ease-out; }
+.bezel  { translate: calc(var(--tx, 0) * 2px) calc(var(--ty, 0) * 2px); }
+.plate  { translate: calc(var(--tx, 0) * 3px) calc(var(--ty, 0) * 3px); }
+.speakers, .knob-well { translate: calc(var(--tx, 0) * 4.5px) calc(var(--ty, 0) * 4.5px); }
+:is(.bezel, .plate, .speakers, .knob-well) { transition: translate .3s ease-out; }
+.glare {
+  position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 5;
+  background: radial-gradient(circle at calc(50% + var(--tx, 0) * 45%) calc(35% + var(--ty, 0) * 45%), rgba(255,255,255,.16), transparent 45%);
+  mix-blend-mode: soft-light;
+}
+.lcd .glass::after {
+  content: ''; position: absolute; top: -20%; bottom: -20%; width: 30%; left: -40%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.16) 45%, rgba(255,255,255,.05) 55%, transparent);
+  animation: sweep 9s ease-in-out infinite;
+}
+@keyframes sweep { 0%, 70% { left: -40%; } 100% { left: 120%; } }
+@media (prefers-reduced-motion: reduce) {
+  .shell, .bezel, .plate, .speakers, .knob-well { transform: none; translate: none; }
+  .lcd .glass::after { display: none; }
+}
