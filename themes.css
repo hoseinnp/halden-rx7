@@ -467,7 +467,6 @@
 [data-theme=nova] .knob-inner { background: radial-gradient(circle at 45% 35%, #1b2740, #070b14 70%); box-shadow: 0 0 0 1px rgba(57,243,255,.4), 0 0 12px rgba(57,243,255,.25); }
 [data-theme=nova] .slit { width: 6px; background: linear-gradient(180deg, var(--a), var(--c)); box-shadow: 0 0 8px var(--a); }
 [data-theme=nova] .pointer { background: #fff; box-shadow: 0 0 8px var(--a), 0 0 2px #fff; }
-[data-theme=nova] .glare { mix-blend-mode: screen; background: radial-gradient(circle at calc(50% + var(--tx, 0) * 45%) calc(35% + var(--ty, 0) * 45%), rgba(150,220,255,.10), transparent 45%); }
 @media (prefers-reduced-motion: reduce) {
   [data-theme=nova] .shell { animation: none; }
 }

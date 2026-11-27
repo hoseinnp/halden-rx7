@@ -278,22 +278,6 @@ const bars = Array.from({ length: 10 }, () => vu.appendChild(document.createElem
   root.setProperty('--pump', 1 + Math.max(0, bass - 0.35) / 0.65 * 0.12);
 })();
 
-// ---------- depth: device leans toward the pointer (CSS reads --tx/--ty in -1..1) ----------
-let tiltFrame = 0;
-document.addEventListener('pointermove', (e) => {
-  if (tiltFrame || document.body.dataset.view === 'library') return;
-  tiltFrame = requestAnimationFrame(() => {
-    tiltFrame = 0;
-    const s = document.documentElement.style;
-    s.setProperty('--tx', (e.clientX / innerWidth * 2 - 1).toFixed(3));
-    s.setProperty('--ty', (e.clientY / innerHeight * 2 - 1).toFixed(3));
-  });
-});
-document.documentElement.addEventListener('pointerleave', () => {
-  document.documentElement.style.setProperty('--tx', 0);
-  document.documentElement.style.setProperty('--ty', 0);
-});
-
 // ---------- start ----------
 (async () => {
   const cfg = await deck.getConfig();
