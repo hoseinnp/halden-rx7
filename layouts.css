@@ -128,7 +128,7 @@
 
 /* =====================================================================
    SILVER — speakers sit right under the screen around the level meter,
-   dial in the middle, controls at the bottom. Speakers: oval car woofers.
+   dial in the middle, controls at the bottom. Speakers: round woofers in a notched chrome rim.
    ===================================================================== */
 [data-theme=silver] .body {
   grid-template-areas: "top top top" "screen screen screen" "spkL meter spkR" "l1 l1 l1" "rep knob lst" "plate plate plate";
@@ -136,16 +136,18 @@
 [data-theme=silver] .label-row:not(.slim) { display: flex; grid-area: l1; justify-self: stretch; margin: -6px 0 0; }
 [data-theme=silver] .main-lcd { height: 150px; }
 [data-theme=silver] .spk {
-  zoom: .78; width: 150px; height: 104px; border-radius: 50%;
-  background: repeating-conic-gradient(from 0deg, transparent 0 11deg, rgba(40,42,46,.5) 11deg 13deg), conic-gradient(from 200deg, #fbfbfc, #8d9096, #eef0f2, #6d7075, #f7f8f9, #9a9da2, #fbfbfc);
-  box-shadow: 0 0 0 4px #c9ccd0, 0 0 0 5px #8d9096, 0 6px 10px rgba(0,0,0,.3);
+  zoom: .88; width: 128px; height: 128px; border-radius: 50%;
+  background:
+    repeating-conic-gradient(from 10deg, transparent 0 40deg, #1b1c1f 40deg 44deg),
+    conic-gradient(from 200deg, #fbfbfc, #8d9096, #eef0f2, #6d7075, #f7f8f9, #9a9da2, #fbfbfc);
+  box-shadow: 0 0 0 2px #6f7378, 0 0 0 5px #d6d9dc, 0 0 0 6px #9a9da2, 0 6px 12px rgba(0,0,0,.35);
 }
 [data-theme=silver] .grille {
-  width: 128px; height: 84px;
+  width: 102px; height: 102px; border-radius: 50%;
   background:
-    radial-gradient(ellipse at 40% 30%, rgba(255,255,255,.25), transparent 30%),
-    radial-gradient(ellipse, #4b4e53 0 12%, #17181b 13% 17%, #2f3236 18% 54%, #0f1012 55% 64%, #575a5f 65% 70%, #1d1e21 71%);
-  box-shadow: 0 0 0 2px #2a2c30, inset 0 0 6px rgba(0,0,0,.6);
+    radial-gradient(circle at 42% 38%, rgba(255,255,255,.2), transparent 24%),
+    radial-gradient(circle, #3c3f44 0 16%, #17181b 17% 20%, #2b2d31 21% 30%, #0f1012 31% 58%, #2a2c30 59% 62%, #0b0c0d 63% 84%, #4a4d52 85% 88%, #141517 89%);
+  box-shadow: inset 0 0 0 2px #0a0a0b, inset 0 4px 10px rgba(0,0,0,.7);
 }
 
 /* =====================================================================
