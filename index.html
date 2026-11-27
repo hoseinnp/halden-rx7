@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; media-src 'self' file:; connect-src 'self' file:; style-src 'self' 'unsafe-inline'">
+<title>HALDEN RX-7</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="themes.css">
+<link rel="stylesheet" href="library.css">
+</head>
+<body>
+<div class="shell">
+  <div class="body">
+
+    <!-- top row -->
+    <div class="top">
+      <div class="top-group">
+        <button class="cap cream sq" id="btnOpen" title="Open files"></button>
+        <button class="cap black slot" id="btnFolder" title="Open folder"></button>
+      </div>
+      <div class="top-group mid">
+        <span class="print tiny">PWR</span>
+        <span class="lamp" id="lamp"></span>
+        <span class="print tiny">ON</span>
+      </div>
+      <div class="top-group right">
+        <button class="cap cream sq" id="btnMin" title="Minimize"></button>
+        <button class="cap cream sq" id="btnOff" title="Power off"></button>
+      </div>
+      <div class="top-labels">
+        <span>OPEN</span><span>DIR</span><span class="gap"></span><span>MIN</span><span>OFF</span>
+      </div>
+    </div>
+
+    <!-- main LCD -->
+    <div class="bezel main-bezel">
+      <div class="lcd main-lcd" id="mainLcd">
+        <div class="now" id="nowView">
+          <div class="row status">
+            <span id="stState">STOP</span>
+            <span class="flags"><span id="stShuf">SHUF</span><span id="stRep">RPT</span></span>
+          </div>
+          <div class="cover-wrap"><img id="cover" alt=""></div>
+          <div class="marquee"><span class="seg14" id="title">NO DISC</span></div>
+          <div class="row info"><span id="artist">PRESS OPEN</span></div>
+          <div class="row info dim"><span id="album"></span></div>
+          <div class="row bottom">
+            <span class="seg7 big"><span class="ghost">88:88</span><span id="lcdTime">0:00</span></span>
+            <span class="vol-read" id="volRead">VOL 70</span>
+          </div>
+        </div>
+        <ol class="list" id="listView" hidden></ol>
+        <div class="glass"></div>
+      </div>
+    </div>
+
+    <!-- tuner plate -->
+    <div class="plate">
+      <div class="plate-head">
+        <button class="badge" id="btnTheme" title="Change theme">◐</button><button class="icon-box lib-btn" id="btnLib" title="Library view">▭</button>
+        <span class="print plate-brand">HALDEN RX-7 · DIGITAL AUDIO</span>
+        <span class="print icon-box">♫</span>
+      </div>
+      <div class="tuner">
+        <div class="cap-block left">
+          <span class="seg7" id="trkNo">--</span>
+          <span class="tiny-lcd">TRK</span>
+        </div>
+        <div class="scale" id="scale" title="Seek">
+          <div class="scale-nums"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
+          <div class="ticks top-ticks"></div>
+          <div class="band"><div class="band-fill" id="bandFill"></div></div>
+          <div class="ticks bottom-ticks"></div>
+          <div class="needle" id="needle"></div>
+          <div class="scale-times">
+            <span class="seg7"><span class="ghost">88:88</span><span id="elapsed">0:00</span></span>
+            <span class="seg7"><span class="ghost">-88:88</span><span id="remain">-0:00</span></span>
+          </div>
+        </div>
+        <div class="cap-block right">
+          <span class="seg7" id="trkTotal">--</span>
+          <span class="tiny-lcd" id="repTag">ALL</span>
+        </div>
+      </div>
+      <div class="marks"><i></i><i class="red"></i><i></i></div>
+      <div class="keys">
+        <div class="keybank">
+          <button class="key" id="kPrev" title="Previous"><em></em></button>
+          <button class="key" id="kPlay" title="Play / Pause"><em></em></button>
+          <button class="key" id="kStop" title="Stop"><em></em></button>
+          <button class="key" id="kNext" title="Next"><em></em></button>
+        </div>
+        <button class="key solo" id="kShuf" title="Shuffle"><em></em></button>
+      </div>
+      <div class="key-labels"><span>◀◀</span><span>▶ ❚❚</span><span>■</span><span>▶▶</span><span class="solo-l">SHUF</span></div>
+    </div>
+
+    <!-- speakers -->
+    <div class="label-row print"><span>TRACK — PLAY</span><span class="gap"></span><span>LEVEL — VOL</span></div>
+    <div class="speakers">
+      <div class="spk"><div class="grille" id="spkL"></div></div>
+      <div class="center-col">
+        <div class="vu" id="vu"></div>
+        <span class="print tiny">SIGNAL · METER</span>
+        <span class="screw"></span>
+      </div>
+      <div class="spk"><div class="grille" id="spkR"></div></div>
+    </div>
+    <div class="label-row print slim"><span></span><span>STEREO ━━ ✚ ━━ 2×5W</span><span></span></div>
+
+    <!-- bottom -->
+    <div class="bottom-row">
+      <div class="side-ctl">
+        <span class="print">— RPT</span>
+        <button class="key sqkey" id="kRep" title="Repeat: off / all / one"><em></em></button>
+        <span class="print tiny" id="repLabel">OFF</span>
+      </div>
+      <div class="knob-well">
+        <div class="knob-scale"></div>
+        <div class="knob" id="knob" title="Volume (drag or scroll)">
+          <div class="knob-inner"><span class="slit"></span></div>
+          <span class="pointer"></span>
+        </div>
+      </div>
+      <div class="side-ctl">
+        <span class="print">LIST</span>
+        <span class="print squiggle">∿</span>
+        <button class="switch" id="swList" title="Playlist"><span></span></button>
+        <span class="print tiny">PLAYLIST</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="library" id="library">
+  <aside class="lib-side">
+    <button class="lib-ico" id="libBack" title="Back to device view"><svg viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><rect x="8.5" y="5" width="7" height="5" rx="1"/><circle cx="12" cy="16" r="2.5"/></svg></button>
+    <button class="lib-ico" id="libOpen" title="Open files"><svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></button>
+    <button class="lib-ico" id="libFolder" title="Open folder"><svg viewBox="0 0 24 24"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5H9l2 2.5h8.5A1.5 1.5 0 0 1 21 9v8.5a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z"/></svg></button>
+    <span class="lib-flex"></span>
+    <button class="lib-ico" id="libDark" title="Light / dark"><svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button>
+  </aside>
+
+  <header class="lib-head">
+    <span class="lib-logo">RX-7 LIBRARY</span>
+    <label class="lib-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg><input id="libSearch" placeholder="Search for songs, artists, albums" spellcheck="false"></label>
+    <span class="lib-flex"></span>
+    <button class="lib-ico sm" id="libMin" title="Minimize"><svg viewBox="0 0 24 24"><path d="M6 12h12"/></svg></button>
+    <button class="lib-ico sm" id="libClose" title="Power off"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg></button>
+  </header>
+
+  <section class="lib-player">
+    <div class="tt">
+      <div class="tt-platter">
+        <div class="tt-record"><div class="tt-label"><img id="ttCover" alt=""></div></div>
+      </div>
+      <div class="tt-arm-base"></div>
+      <div class="tt-arm" id="ttArm"><span class="tt-head"></span></div>
+      <span class="tt-print tt-rpm">33 · 45 RPM</span>
+      <div class="tt-fader" id="ttFader" title="Volume (drag)"><span class="tt-fader-cap" id="ttFaderCap"></span></div>
+      <span class="tt-print tt-vol">VOL</span>
+      <button class="tt-start" id="ttStart" title="Play / Pause"><span></span></button>
+      <span class="tt-print tt-start-l">START · STOP</span>
+    </div>
+
+    <div class="lib-now">
+      <div class="lib-title-row"><h1 id="libTitle">No disc</h1><span class="lib-count" id="libPos"></span></div>
+      <div class="lib-meta"><span class="chip dark" id="libGenre" hidden></span><span id="libArtist">Open a folder to start</span></div>
+    </div>
+
+    <div class="wave-row">
+      <span id="libEl">0:00</span>
+      <canvas id="wave" width="560" height="56" title="Seek"></canvas>
+      <span id="libDur">0:00</span>
+    </div>
+
+    <div class="lib-transport">
+      <button class="lib-ico" id="libShuf" title="Shuffle"><svg viewBox="0 0 24 24"><path d="M3 7h3.5c4 0 6 10 10 10H21m0 0l-3-3m3 3l-3 3M3 17h3.5c1.6 0 2.8-1.6 3.8-3.5M21 7h-4.5c-1.6 0-2.8 1.6-3.8 3.5M21 7l-3-3m3 3l-3 3"/></svg></button>
+      <button class="lib-ico" id="libPrev" title="Previous"><svg viewBox="0 0 24 24"><path d="M6 5v14M19 5L9 12l10 7z"/></svg></button>
+      <button class="lib-play" id="libPlay" title="Play / Pause"><svg class="i-play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></svg><svg class="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg></button>
+      <button class="lib-ico" id="libNext" title="Next"><svg viewBox="0 0 24 24"><path d="M18 5v14M5 5l10 7-10 7z"/></svg></button>
+      <button class="lib-ico" id="libRep" title="Repeat: off / all / one"><svg viewBox="0 0 24 24"><path d="M4 11V9a3 3 0 0 1 3-3h13m0 0l-3-3m3 3l-3 3M20 13v2a3 3 0 0 1-3 3H4m0 0l3 3m-3-3l3-3"/></svg><b id="libRepOne">1</b></button>
+    </div>
+  </section>
+
+  <section class="lib-browse">
+    <div class="lib-h2">Music Categories</div>
+    <div class="chips" id="libChips"></div>
+    <div class="albums" id="libAlbums"></div>
+    <div class="lib-h2">Tracks <span class="lib-count" id="libCount"></span></div>
+    <ol class="tracks" id="libTracks"></ol>
+  </section>
+</div>
+<audio id="audio" preload="auto"></audio>
+<script src="logic.js"></script>
+<script src="renderer.js"></script>
+<script src="library.js"></script>
+</body>
+</html>

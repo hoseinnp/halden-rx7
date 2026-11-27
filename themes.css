@@ -1,0 +1,401 @@
+/* Alternative skins. Each theme restyles the same device parts; layout stays in style.css. */
+
+/* ---------- shared: dark "negative" LCDs that glow ---------- */
+:is([data-theme=clear], [data-theme=deck], [data-theme=graphite], [data-theme=silver]) .lcd,
+:is([data-theme=clear], [data-theme=deck], [data-theme=graphite]) .scale {
+  background: radial-gradient(ellipse at 50% 30%, rgba(255,255,255,.06), transparent 70%), linear-gradient(180deg, var(--lcd-hi), var(--lcd) 45%, var(--lcd-lo));
+  text-shadow: 0 0 6px var(--glow);
+  box-shadow: inset 0 0 18px rgba(0,0,0,.6), inset 0 3px 6px rgba(0,0,0,.5);
+}
+:is([data-theme=clear], [data-theme=deck], [data-theme=graphite], [data-theme=silver]) .lcd .glass {
+  background: linear-gradient(160deg, rgba(255,255,255,.1), transparent 38%), repeating-linear-gradient(0deg, rgba(255,255,255,.02) 0 1px, transparent 1px 3px);
+}
+:is([data-theme=clear], [data-theme=deck], [data-theme=graphite], [data-theme=silver]) .cover-wrap img { mix-blend-mode: screen; opacity: .7; }
+:is([data-theme=clear], [data-theme=deck], [data-theme=graphite], [data-theme=silver]) .cap-block { color: var(--seg); }
+:is([data-theme=clear], [data-theme=deck], [data-theme=graphite], [data-theme=silver]) .cap-block .seg7 { text-shadow: 0 0 6px var(--glow); }
+:is([data-theme=clear], [data-theme=deck], [data-theme=graphite], [data-theme=silver]) .tiny-lcd { color: var(--seg); }
+:is([data-theme=clear], [data-theme=deck], [data-theme=graphite], [data-theme=silver]) .ghost { opacity: .06; }
+:is([data-theme=clear], [data-theme=deck], [data-theme=graphite]) .scale::after { background: linear-gradient(160deg, rgba(255,255,255,.08), transparent 40%); }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* =====================================================================
+   CLEAR — smoked see-through plastic, silver buttons, spinning discs
+   ===================================================================== */
+[data-theme=clear] {
+  --ink: #e2e3e7; --ink-soft: #9b9ea6;
+  --lcd-hi: #3b3c41; --lcd: #232428; --lcd-lo: #121316;
+  --seg: #f3f3f5; --glow: rgba(255,255,255,.35); --red: #e8283c;
+}
+[data-theme=clear] .shell {
+  background:
+    repeating-linear-gradient(180deg, transparent 0 46px, rgba(255,255,255,.12) 46px 47px, transparent 47px 62px),
+    linear-gradient(90deg, rgba(40,42,48,.55), rgba(90,94,102,.3) 45%, rgba(40,42,48,.55));
+  border-color: rgba(255,255,255,.28);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.4), inset 2px 0 3px rgba(255,255,255,.25), 0 14px 26px rgba(0,0,0,.45);
+}
+[data-theme=clear] .body {
+  background:
+    radial-gradient(circle at 9% 33%, rgba(214,170,90,.55) 0 5px, rgba(120,90,40,.5) 6px 7px, transparent 8px),
+    radial-gradient(circle at 91% 33%, rgba(214,170,90,.55) 0 5px, rgba(120,90,40,.5) 6px 7px, transparent 8px),
+    radial-gradient(circle at 8% 57%, rgba(214,170,90,.4) 0 4px, transparent 5px),
+    radial-gradient(circle at 92% 57%, rgba(214,170,90,.4) 0 4px, transparent 5px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 1px, transparent 1px 24px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 31px),
+    linear-gradient(180deg, rgba(62,64,70,.82), rgba(30,31,35,.86) 55%, rgba(18,19,22,.92));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.22), inset 0 0 0 1px rgba(255,255,255,.08), 0 0 0 1px rgba(0,0,0,.5);
+}
+[data-theme=clear] .cap.cream.sq {
+  border-radius: 50%; width: 22px; height: 22px;
+  background: repeating-radial-gradient(circle, rgba(255,255,255,.12) 0 1px, transparent 1px 2px), radial-gradient(circle at 45% 35%, #fbfbfc, #c4c6ca 55%, #85878c);
+  box-shadow: 0 0 0 1px #2a2b2e, 0 2px 4px rgba(0,0,0,.6), inset 0 1px 0 #fff;
+}
+[data-theme=clear] .cap.black.slot { box-shadow: 0 0 0 2px #3a3b40, 0 0 0 3px #111; }
+[data-theme=clear] .lamp { background: radial-gradient(circle at 40% 35%, #6b2a30, #3a1216); box-shadow: 0 0 0 2px #2b2c30, 0 0 0 3px #111; }
+[data-theme=clear] .lamp.on { background: radial-gradient(circle at 40% 35%, #ffb3bb, #ff2a43 50%, #a10f22); box-shadow: 0 0 0 2px #2b2c30, 0 0 0 3px #111, 0 0 12px 3px rgba(255,40,70,.7); }
+[data-theme=clear] .bezel { background: rgba(255,255,255,.05); box-shadow: inset 0 2px 5px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.1); }
+[data-theme=clear] .lcd { box-shadow: 0 0 0 1px rgba(255,255,255,.28), 0 0 0 3px rgba(0,0,0,.6), inset 0 0 18px rgba(0,0,0,.6); }
+[data-theme=clear] .plate { background: linear-gradient(180deg, rgba(80,82,90,.55), rgba(30,31,35,.7)); box-shadow: 0 0 0 1px rgba(255,255,255,.14), 0 4px 8px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.15); }
+[data-theme=clear] .tuner { box-shadow: 0 0 0 1px rgba(255,255,255,.25), 0 0 0 3px rgba(0,0,0,.55); }
+[data-theme=clear] .cap-block { background: linear-gradient(180deg, #121214, #050506); }
+[data-theme=clear] .keybank { background: rgba(0,0,0,.55); box-shadow: 0 0 0 1px rgba(255,255,255,.15); }
+[data-theme=clear] .key {
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,.08) 0 1px, transparent 1px 3px), linear-gradient(180deg, #f5f5f7, #cfd0d3 50%, #a5a7ab);
+  box-shadow: inset 0 1px 0 #fff, inset 0 -3px 0 #7c7e83, 0 2px 0 #1a1b1d;
+}
+[data-theme=clear] .key:active, [data-theme=clear] .key.down {
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,.08) 0 1px, transparent 1px 3px), linear-gradient(180deg, #c9cacd, #b0b2b6);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.45);
+}
+[data-theme=clear] .key.solo, [data-theme=clear] .sqkey { box-shadow: 0 0 0 2px #1a1b1e, 0 0 0 3px rgba(255,255,255,.2), inset 0 1px 0 #fff, inset 0 -3px 0 #7c7e83; }
+[data-theme=clear] .sqkey { border-radius: 50%; }
+[data-theme=clear] .spk {
+  background: conic-gradient(from 200deg, #6f7278, #2b2c30, #5f6268, #1e1f22, #6f7278);
+  box-shadow: 0 0 0 4px rgba(255,255,255,.06), 0 0 0 5px rgba(255,255,255,.18), 0 6px 12px rgba(0,0,0,.5);
+}
+[data-theme=clear] .grille {
+  background:
+    radial-gradient(circle, #121315 0 8px, #d7d9dd 9px 12px, #8c8f95 13px 14px, transparent 15px),
+    radial-gradient(circle, transparent 0 46px, rgba(255,255,255,.35) 47px, transparent 49px),
+    conic-gradient(from 0deg, #cfd3d9, #aee9ff, #efc9ff, #fff0b0, #cfd3d9, #b9f2e4, #e2c4ff, #ffe1b8, #cfd3d9);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.4), 0 0 8px rgba(0,0,0,.5);
+}
+[data-theme=clear].playing .grille { animation: spin 1.6s linear infinite; }
+[data-theme=clear] .vu { background: #0b0b0d; box-shadow: inset 0 2px 4px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.15); }
+[data-theme=clear] .vu i { background: linear-gradient(0deg, #9da0a6, #fff); box-shadow: 0 0 3px rgba(255,255,255,.5); }
+[data-theme=clear] .screw { background: radial-gradient(circle at 40% 35%, #f5f5f7, #85878c); box-shadow: 0 0 0 1px #111; }
+[data-theme=clear] .switch { background: linear-gradient(180deg, #111214, #2b2c30); box-shadow: inset 0 2px 3px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.2); }
+[data-theme=clear] .switch span { background: linear-gradient(180deg, #f5f5f7, #a5a7ab); }
+[data-theme=clear] .knob-well { background: radial-gradient(circle, rgba(0,0,0,.45) 60%, rgba(255,255,255,.1) 70%, rgba(0,0,0,.3) 74%); box-shadow: inset 0 3px 8px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.12); }
+[data-theme=clear] .knob-scale { background: repeating-conic-gradient(from -135deg, rgba(255,255,255,.6) 0 1.2deg, transparent 1.2deg 13.5deg); }
+[data-theme=clear] .knob-inner { background: repeating-radial-gradient(circle, rgba(255,255,255,.1) 0 1px, transparent 1px 2px), radial-gradient(circle at 45% 35%, #f8f8fa, #a5a7ac 60%, #6b6d72); }
+[data-theme=clear] .slit { background: #1a1b1e; }
+[data-theme=clear] .pointer { background: #fff; }
+
+/* =====================================================================
+   DECK — glossy black DJ deck, gold accents, blue screen
+   ===================================================================== */
+[data-theme=deck] {
+  --ink: #d4d4d6; --ink-soft: #8c8c90;
+  --lcd-hi: #10243c; --lcd: #08162a; --lcd-lo: #030912;
+  --seg: #7fd3ff; --glow: rgba(70,180,255,.7); --red: #e8342b;
+  --gold-ring: conic-gradient(from 200deg, #f6dfae, #8a6631, #f9e6bf, #76572a, #e8c98d, #8a6631, #f6dfae);
+}
+[data-theme=deck] .shell {
+  background: linear-gradient(90deg, #0b0b0c, #2b2b2e 50%, #0b0b0c);
+  border-color: rgba(255,255,255,.14);
+  box-shadow: inset 0 0 0 1px #000, 0 14px 26px rgba(0,0,0,.55);
+}
+[data-theme=deck] .body {
+  background: linear-gradient(180deg, rgba(255,255,255,.07), transparent 30%), linear-gradient(180deg, #1d1d20, #121214 50%, #0b0b0c);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 0 0 1px #000;
+}
+[data-theme=deck] .cap.cream.sq { background: linear-gradient(180deg, #34343a, #111113); box-shadow: 0 0 0 1px #000, 0 0 0 2px #4a4a50, 0 2px 4px rgba(0,0,0,.6); }
+[data-theme=deck] .cap.black.slot { background: linear-gradient(180deg, #8a6631, #e8c98d); box-shadow: 0 0 0 2px #000, 0 0 0 3px #3a3a3e; }
+[data-theme=deck] .lamp { background: radial-gradient(circle at 40% 35%, #5c1f1c, #2a0c0a); box-shadow: 0 0 0 2px #000, 0 0 0 3px #3a3a3e; }
+[data-theme=deck] .lamp.on { background: radial-gradient(circle at 40% 35%, #ffc2b8, #ff3b2b 50%, #a3150b); box-shadow: 0 0 0 2px #000, 0 0 0 3px #3a3a3e, 0 0 12px 3px rgba(255,50,30,.7); }
+[data-theme=deck] .bezel { background: linear-gradient(180deg, #050506, #1d1d20); box-shadow: inset 0 2px 4px rgba(0,0,0,.8), 0 1px 0 rgba(255,255,255,.08); }
+[data-theme=deck] .lcd { box-shadow: 0 0 0 2px #000, 0 0 0 3px #4b4b50, inset 0 0 18px rgba(0,0,0,.6); }
+[data-theme=deck] .band { height: 12px; }
+[data-theme=deck] .band-fill { background: repeating-linear-gradient(90deg, #4fc0ff 0 1px, transparent 1px 2px), linear-gradient(180deg, transparent 15%, rgba(79,192,255,.5) 50%, transparent 85%); }
+[data-theme=deck] .plate { background: linear-gradient(180deg, #2b2b2f, #151517); box-shadow: 0 0 0 1px #000, 0 4px 8px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.1); }
+[data-theme=deck] .tuner { box-shadow: 0 0 0 2px #000, 0 0 0 3px #3b3b3f; }
+[data-theme=deck] .cap-block { background: #030304; }
+[data-theme=deck] .keybank { background: #000; box-shadow: 0 0 0 1px #3b3b3f; }
+[data-theme=deck] .key { background: linear-gradient(180deg, #2c2c30, #141416 55%, #0b0b0c); }
+[data-theme=deck] .key.solo, [data-theme=deck] .sqkey {
+  background: radial-gradient(circle at 50% 35%, #fbe8c2, #d6ad68 45%, #8a6631);
+  box-shadow: 0 0 0 2px #000, 0 0 0 3px #3b3b3f, inset 0 1px 0 #fff3d8, inset 0 -3px 0 #6a4c22;
+}
+[data-theme=deck] .key.solo.down, [data-theme=deck] .sqkey.down { box-shadow: 0 0 0 2px #000, 0 0 0 3px #3b3b3f, inset 0 2px 3px rgba(0,0,0,.5); filter: brightness(.9); }
+[data-theme=deck] .spk { background: var(--gold-ring); box-shadow: 0 0 0 4px #0b0b0c, 0 0 0 5px #3b3b3f, 0 6px 12px rgba(0,0,0,.6); }
+[data-theme=deck] .grille { background: radial-gradient(circle, #3a3a3e 0 .8px, transparent 1.2px) 0 0 / 3.4px 3.4px, radial-gradient(circle, #1a1a1c, #050506 75%); }
+[data-theme=deck] .vu { background: #030304; box-shadow: inset 0 2px 4px rgba(0,0,0,.9), 0 0 0 1px #3b3b3f; }
+[data-theme=deck] .vu i { background: linear-gradient(0deg, #2d8bff, #63d1ff 60%, #ffb35c); box-shadow: 0 0 4px rgba(80,180,255,.6); }
+[data-theme=deck] .screw { background: radial-gradient(circle at 40% 35%, #f6dfae, #76572a); box-shadow: 0 0 0 1px #000; }
+[data-theme=deck] .switch { background: linear-gradient(180deg, #050506, #222225); box-shadow: inset 0 2px 3px rgba(0,0,0,.8), 0 0 0 1px #3b3b3f; }
+[data-theme=deck] .switch span { background: linear-gradient(180deg, #e8e8ea, #8e9096); }
+[data-theme=deck] .knob-well { background: radial-gradient(circle, #050506 62%, #4b4b50 68%, #0b0b0c 72%, #2b2b2e 74%); box-shadow: inset 0 3px 8px rgba(0,0,0,.8), 0 1px 0 rgba(255,255,255,.08); }
+[data-theme=deck] .knob-scale { background: repeating-conic-gradient(from -135deg, rgba(216,174,104,.85) 0 1.2deg, transparent 1.2deg 13.5deg); }
+[data-theme=deck] .knob {
+  background:
+    conic-gradient(from 300deg, transparent, rgba(255,255,255,.14) 8%, transparent 20%, transparent 50%, rgba(255,255,255,.1) 58%, transparent 70%),
+    repeating-radial-gradient(circle, #111113 0 2px, #1c1c1f 2px 3px);
+  box-shadow: 0 0 0 2px #000, 0 0 0 4px #8a6631, 0 6px 14px rgba(0,0,0,.7);
+}
+[data-theme=deck] .knob-inner { background: repeating-radial-gradient(circle, rgba(255,255,255,.12) 0 1px, transparent 1px 2px), radial-gradient(circle at 45% 35%, #f5f5f7, #8e9096 60%, #4a4b4f); }
+[data-theme=deck] .slit { width: 14px; height: 14px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #9a9ca1, #2a2b2e); }
+[data-theme=deck] .pointer { background: #e8c98d; box-shadow: 0 0 4px rgba(232,201,141,.8); }
+
+/* =====================================================================
+   GRAPHITE — dark gunmetal, bolted panels, orange glow
+   ===================================================================== */
+[data-theme=graphite] {
+  --ink: #c0c3c8; --ink-soft: #7d8187;
+  --lcd-hi: #1e2022; --lcd: #121314; --lcd-lo: #08090a;
+  --seg: #ff9b45; --glow: rgba(255,140,50,.7); --red: #ff7a2a;
+  --bolts:
+    radial-gradient(circle at 9px 9px, #8a8e94 0 2.5px, #1a1b1d 3px 4px, transparent 4.5px),
+    radial-gradient(circle at calc(100% - 9px) 9px, #8a8e94 0 2.5px, #1a1b1d 3px 4px, transparent 4.5px),
+    radial-gradient(circle at 9px calc(100% - 9px), #8a8e94 0 2.5px, #1a1b1d 3px 4px, transparent 4.5px),
+    radial-gradient(circle at calc(100% - 9px) calc(100% - 9px), #8a8e94 0 2.5px, #1a1b1d 3px 4px, transparent 4.5px);
+}
+[data-theme=graphite] .shell {
+  border-radius: 4px;
+  clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 20px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px), 0 20px);
+  background: var(--noise), linear-gradient(90deg, #3d4044, #6b6f75 45%, #3d4044);
+  border: 0;
+  box-shadow: inset 0 0 0 1px #1a1b1d, inset 0 0 0 2px #7b8086;
+}
+[data-theme=graphite] .body {
+  border-radius: 3px;
+  background: var(--noise), linear-gradient(180deg, #3b3e42, #2a2c2f 45%, #1d1f21);
+  box-shadow: inset 0 0 0 1px #111, inset 0 0 0 2px #4b4f54, 0 0 0 1px #111;
+}
+[data-theme=graphite] .cap.cream.sq { background: linear-gradient(180deg, #5b5f64, #2b2d30); box-shadow: 0 0 0 1px #111, 0 2px 0 #0b0b0c, inset 0 1px 0 rgba(255,255,255,.25); }
+[data-theme=graphite] .cap.black.slot { box-shadow: 0 0 0 2px #2a2c2f, 0 0 0 3px #5b5f64; }
+[data-theme=graphite] .lamp { background: radial-gradient(circle at 40% 35%, #5a3418, #2a160a); box-shadow: 0 0 0 2px #1a1b1d, 0 0 0 3px #5b5f64; }
+[data-theme=graphite] .lamp.on { background: radial-gradient(circle at 40% 35%, #ffe0b8, #ff9038 50%, #b44d0c); box-shadow: 0 0 0 2px #1a1b1d, 0 0 0 3px #5b5f64, 0 0 14px 4px rgba(255,130,40,.75); }
+[data-theme=graphite] .bezel { border-radius: 4px; background: var(--bolts), linear-gradient(180deg, #2b2d30, #1b1c1e); box-shadow: inset 0 0 0 1px #0b0b0c, inset 0 0 0 2px #4b4f54; padding: 14px; }
+[data-theme=graphite] .main-lcd { height: 160px; border-radius: 3px; }
+[data-theme=graphite] .lcd { box-shadow: 0 0 0 2px #0a0a0a, 0 0 0 3px #55595e, inset 0 0 18px rgba(0,0,0,.6); }
+[data-theme=graphite] .plate { border-radius: 4px; background: var(--bolts), var(--noise), linear-gradient(180deg, #34373b, #222427); box-shadow: inset 0 0 0 1px #0b0b0c, inset 0 0 0 2px #4b4f54, 0 3px 6px rgba(0,0,0,.5); padding: 9px 16px; }
+[data-theme=graphite] .tuner { border-radius: 2px; box-shadow: 0 0 0 2px #0a0a0a, 0 0 0 3px #55595e; }
+[data-theme=graphite] .cap-block { background: #060607; }
+[data-theme=graphite] .keybank { background: #0b0b0c; box-shadow: 0 0 0 1px #55595e; }
+[data-theme=graphite] .key { background: linear-gradient(180deg, #4e5257, #2c2e31 55%, #1d1f21); }
+[data-theme=graphite] .key em { background: #ff8a33; box-shadow: 0 0 4px rgba(255,130,40,.5); }
+[data-theme=graphite] .key.solo, [data-theme=graphite] .sqkey { box-shadow: 0 0 0 2px #0b0b0c, 0 0 0 3px #55595e, inset 0 1px 0 rgba(255,255,255,.18), inset 0 -3px 0 #0a0909; }
+[data-theme=graphite] .sqkey { background: linear-gradient(180deg, #3a2414, #1b0f07); }
+[data-theme=graphite] .sqkey em { height: 4px; background: #ff9a40; box-shadow: 0 0 8px 2px rgba(255,140,50,.8); }
+[data-theme=graphite] .spk {
+  border-radius: 14px;
+  background: var(--bolts), linear-gradient(180deg, #34373b, #1f2124);
+  box-shadow: inset 0 0 0 1px #0b0b0c, inset 0 0 0 2px #55595e, 0 4px 8px rgba(0,0,0,.5);
+}
+[data-theme=graphite] .grille {
+  background:
+    radial-gradient(ellipse at 36% 30%, rgba(255,255,255,.22), transparent 32%),
+    radial-gradient(circle, #050506 0 14px, #2c2f33 15px 18px, #0b0c0d 19px 27px, #3b3e42 28px 30px, #101113 31px 42px, #5b5f64 43px 46px, #1a1b1d 47px 50px);
+  box-shadow: 0 0 0 2px #0b0b0c, 0 3px 6px rgba(0,0,0,.6);
+}
+[data-theme=graphite] .vu { border-radius: 2px; background: #060607; box-shadow: inset 0 2px 4px rgba(0,0,0,.9), 0 0 0 1px #55595e; }
+[data-theme=graphite] .vu i { background: linear-gradient(0deg, #c8561a, #ffaa55); box-shadow: 0 0 5px rgba(255,130,40,.8); }
+[data-theme=graphite] .screw { background: radial-gradient(circle at 40% 35%, #9a9ea4, #3b3e42); box-shadow: 0 0 0 1px #0b0b0c; }
+[data-theme=graphite] .switch { border-radius: 2px; background: linear-gradient(180deg, #0b0b0c, #2b2d30); box-shadow: inset 0 2px 3px rgba(0,0,0,.8), 0 0 0 1px #55595e; }
+[data-theme=graphite] .switch span { background: linear-gradient(180deg, #8a8e94, #3b3e42); }
+[data-theme=graphite] .knob-well { background: radial-gradient(circle, #141517 62%, #4b4f54 68%, #1b1c1e 72%); box-shadow: inset 0 3px 8px rgba(0,0,0,.8), 0 0 0 1px #55595e; }
+[data-theme=graphite] .knob-scale { background: repeating-conic-gradient(from -135deg, rgba(255,150,70,.8) 0 1.2deg, transparent 1.2deg 13.5deg); }
+[data-theme=graphite] .knob {
+  background: repeating-conic-gradient(from 0deg, #3b3e42 0 3deg, #24262a 3deg 6deg);
+  box-shadow: 0 0 0 2px #0b0b0c, 0 0 0 3px #5b5f64, 0 6px 14px rgba(0,0,0,.7);
+}
+[data-theme=graphite] .knob-inner { background: radial-gradient(circle at 45% 35%, #5b5f64, #1f2124 70%); }
+[data-theme=graphite] .pointer { background: #ff9a40; box-shadow: 0 0 6px rgba(255,140,50,.9); }
+
+/* =====================================================================
+   SILVER — brushed aluminium, black glass, yellow LCD, chrome woofers
+   ===================================================================== */
+[data-theme=silver] {
+  --ink: #26282c; --ink-soft: #4f5258;
+  --lcd-hi: #16181b; --lcd: #0b0c0e; --lcd-lo: #040405;
+  --seg: #f6c93c; --glow: rgba(246,201,60,.55); --red: #e2312a;
+  --chrome: conic-gradient(from 200deg, #fbfbfc, #8d9096, #eef0f2, #6d7075, #f7f8f9, #9a9da2, #fbfbfc);
+}
+[data-theme=silver] .shell {
+  background: linear-gradient(90deg, #a9acb1, #f1f2f4 40%, #b4b7bc);
+  border-color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(60,62,66,.35), 0 14px 26px rgba(0,0,0,.4);
+}
+[data-theme=silver] .body {
+  background:
+    repeating-linear-gradient(90deg, rgba(255,255,255,.12) 0 1px, rgba(0,0,0,.025) 1px 2px, transparent 2px 3px),
+    linear-gradient(180deg, #eceef0, #d3d6da 55%, #bfc2c7);
+  box-shadow: inset 0 1px 0 #fff, inset 0 -2px 3px rgba(0,0,0,.2), 0 0 0 1px rgba(80,82,88,.45);
+}
+[data-theme=silver] .cap.cream.sq { background: linear-gradient(180deg, #fbfbfc, #b9bcc1); box-shadow: 0 0 0 1px #7d8086, 0 2px 0 #7d8086, inset 0 1px 0 #fff; }
+[data-theme=silver] .lamp { background: radial-gradient(circle at 40% 35%, #7a2a26, #3a0f0c); box-shadow: 0 0 0 2px #2a2c30, 0 0 0 3px #f5f6f7; }
+[data-theme=silver] .lamp.on { background: radial-gradient(circle at 40% 35%, #ffc6bf, #ff3a2c 50%, #a3150b); box-shadow: 0 0 0 2px #2a2c30, 0 0 0 3px #f5f6f7, 0 0 12px 3px rgba(255,50,30,.7); }
+[data-theme=silver] .bezel { border-radius: 22px; background: linear-gradient(180deg, #d7dade, #f7f8f9); box-shadow: inset 0 2px 4px rgba(0,0,0,.35), 0 1px 0 #fff; }
+[data-theme=silver] .main-lcd { border-radius: 16px; }
+[data-theme=silver] .lcd { box-shadow: 0 0 0 3px #f5f6f7, 0 0 0 4px #8d9096, inset 0 0 22px rgba(0,0,0,.8); }
+[data-theme=silver] .scale { --seg: #2a1e02; background: radial-gradient(ellipse at 50% 40%, rgba(255,240,170,.4), transparent 70%), linear-gradient(180deg, #f8d653, #eab92b 50%, #d2a01b); box-shadow: inset 0 0 10px rgba(120,80,0,.45); }
+[data-theme=silver] .plate { background: repeating-linear-gradient(90deg, rgba(255,255,255,.1) 0 1px, transparent 1px 3px), linear-gradient(180deg, #d9dce0, #b3b6bb); box-shadow: 0 0 0 1px #7d8086, 0 2px 0 #8d9096, 0 4px 6px rgba(0,0,0,.25), inset 0 1px 0 #fff; }
+[data-theme=silver] .tuner { box-shadow: 0 0 0 2px #2a2c30, 0 0 0 3px #f2f3f5, 0 0 0 4px #7d8086; }
+[data-theme=silver] .cap-block { background: linear-gradient(180deg, #202226, #0b0c0e); }
+[data-theme=silver] .keybank { box-shadow: 0 0 0 1px #7d8086, inset 0 1px 2px rgba(0,0,0,.6); }
+[data-theme=silver] .key em { width: 8px; height: 4px; margin-left: -4px; border-radius: 2px; background: #7a1d18; opacity: 1; }
+[data-theme=silver] .key.down em { background: #ff3a2c; box-shadow: 0 0 6px 1px rgba(255,50,30,.9); }
+[data-theme=silver] .key.solo, [data-theme=silver] .sqkey { box-shadow: 0 0 0 2px #121010, 0 0 0 3px #7d8086, inset 0 1px 0 rgba(255,255,255,.18), inset 0 -3px 0 #0a0909; }
+[data-theme=silver] .spk {
+  background: repeating-conic-gradient(from 0deg, transparent 0 11deg, rgba(40,42,46,.55) 11deg 13deg), var(--chrome);
+  box-shadow: 0 0 0 4px #c9ccd0, 0 0 0 5px #8d9096, 0 0 0 8px #e2e4e7, 0 6px 10px rgba(0,0,0,.3);
+}
+[data-theme=silver] .grille {
+  width: 96px; height: 96px;
+  background:
+    radial-gradient(ellipse at 40% 32%, rgba(255,255,255,.25), transparent 30%),
+    radial-gradient(circle, #4b4e53 0 13px, #17181b 14px 16px, #2f3236 17px 33px, #0f1012 34px 39px, #575a5f 40px 42px, #1d1e21 43px 48px);
+  box-shadow: 0 0 0 2px #2a2c30, inset 0 0 6px rgba(0,0,0,.6);
+}
+[data-theme=silver] .vu { background: linear-gradient(180deg, #f8d653, #e0ad22); box-shadow: inset 0 2px 4px rgba(120,80,0,.45), 0 0 0 2px #2a2c30, 0 1px 0 3px #f5f6f7; }
+[data-theme=silver] .vu i { background: #2a1e02; box-shadow: none; opacity: .85; }
+[data-theme=silver] .screw { background: radial-gradient(circle at 40% 35%, #3a3c40, #0b0c0e); box-shadow: 0 0 0 1px #8d9096, 0 1px 0 #fff; }
+[data-theme=silver] .switch { background: linear-gradient(180deg, #8d9096, #d7dade); box-shadow: inset 0 2px 3px rgba(0,0,0,.4), 0 0 0 1px #6d7075, 0 1px 0 #fff; }
+[data-theme=silver] .knob-well {
+  background: repeating-conic-gradient(from 0deg, #e6e8ea 0 26deg, #6d7075 26deg 30deg);
+  box-shadow: 0 0 0 3px #b9bcc1, 0 0 0 4px #8d9096, inset 0 3px 8px rgba(0,0,0,.4);
+}
+[data-theme=silver] .knob-scale { display: none; }
+[data-theme=silver] .knob { box-shadow: 0 0 0 3px #1b1c1f, 0 0 0 6px #c9ccd0, 0 0 0 7px #6d7075, 0 6px 12px rgba(0,0,0,.45); }
+[data-theme=silver] .knob-inner { background: radial-gradient(circle at 45% 35%, #3a3c40, #0e0f11 70%); }
+[data-theme=silver] .pointer { background: #ff3a2c; box-shadow: 0 0 6px rgba(255,50,30,.8); }
+
+/* Themes that restyle .key need their own pressed look. */
+:is([data-theme=deck], [data-theme=graphite], [data-theme=silver]) :is(.key:active, .key.down) { filter: brightness(.78); }
+
+/* =====================================================================
+   NEON — black glass, glowing orange outlines, cassette reels
+   ===================================================================== */
+[data-theme=neon] {
+  --ink: #ff8a2b; --ink-soft: #b9672a;
+  --lcd-hi: #050505; --lcd: #030303; --lcd-lo: #000;
+  --seg: #ff8a2b; --glow: rgba(255,120,30,.85); --red: #ff8a2b;
+  --neon: #ff7a1a;
+  --line: 0 0 0 1.5px var(--neon), 0 0 8px rgba(255,122,26,.7), inset 0 0 8px rgba(255,122,26,.35);
+  --wline: 0 0 0 1.5px #f2f2f2, 0 0 6px rgba(255,255,255,.35);
+}
+[data-theme=neon] :is(.print, .top-labels, .key-labels) { text-shadow: 0 0 5px rgba(255,122,26,.6); }
+[data-theme=neon] .shell { background: #000; border: 1px solid #2a1606; box-shadow: 0 14px 26px rgba(0,0,0,.6); }
+[data-theme=neon] .body {
+  background:
+    repeating-linear-gradient(45deg, rgba(255,122,26,.05) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(-45deg, rgba(255,122,26,.05) 0 1px, transparent 1px 7px),
+    #050505;
+  box-shadow: inset 0 0 0 1px rgba(255,122,26,.5);
+}
+[data-theme=neon] :is(.cap.cream.sq, .cap.black.slot) { background: transparent; box-shadow: var(--wline); }
+[data-theme=neon] .cap:active { box-shadow: var(--line); }
+[data-theme=neon] .lamp { background: transparent; box-shadow: 0 0 0 1.5px var(--neon); }
+[data-theme=neon] .lamp.on { background: var(--neon); box-shadow: 0 0 0 1.5px var(--neon), 0 0 14px 4px rgba(255,122,26,.8); }
+[data-theme=neon] .bezel { background: transparent; box-shadow: none; padding: 6px; }
+[data-theme=neon] .lcd { background: #000; box-shadow: var(--line); border-radius: 14px; }
+[data-theme=neon] .scale { background: #000; box-shadow: none; }
+[data-theme=neon] .plate { background: transparent; box-shadow: none; padding: 4px 6px; }
+[data-theme=neon] .badge { border-color: var(--neon); color: var(--neon); box-shadow: 0 0 6px rgba(255,122,26,.6); }
+[data-theme=neon] .tuner { box-shadow: var(--line); }
+[data-theme=neon] .cap-block { background: #000; color: var(--neon); }
+[data-theme=neon] .tiny-lcd { color: var(--neon); }
+[data-theme=neon] .cap-block.left { border-right: 1.5px solid var(--neon); }
+[data-theme=neon] .cap-block.right { border-left: 1.5px solid var(--neon); }
+[data-theme=neon] .keybank { background: transparent; box-shadow: none; gap: 8px; padding: 0; }
+[data-theme=neon] :is(.key, .key.solo, .sqkey) { background: #000; box-shadow: var(--wline); border-radius: 1px; }
+[data-theme=neon] .key em { background: #f2f2f2; box-shadow: 0 0 4px rgba(255,255,255,.6); }
+[data-theme=neon] :is(.key:active, .key.down, .key.solo.down, .sqkey.down) { box-shadow: var(--line); transform: none; background: #0b0603; }
+[data-theme=neon] .key.down em { background: var(--neon); box-shadow: 0 0 6px var(--neon); }
+[data-theme=neon] .marks i { background: var(--neon); }
+/* speakers become cassette reels */
+[data-theme=neon] .spk { background: transparent; box-shadow: var(--line); }
+[data-theme=neon] .grille {
+  width: 86px; height: 86px;
+  background:
+    radial-gradient(circle, #000 0 15px, var(--neon) 15.5px 17px, transparent 17.5px),
+    repeating-conic-gradient(from 0deg, var(--neon) 0 8deg, transparent 8deg 60deg),
+    radial-gradient(circle, transparent 0 25.5px, var(--neon) 25.5px 27px, transparent 27.5px 41px, var(--neon) 41.5px 43px, transparent 43.5px);
+  -webkit-mask: radial-gradient(circle, #000 0 27px, transparent 27.5px 40.5px, #000 41px);
+  box-shadow: none;
+  filter: drop-shadow(0 0 4px rgba(255,122,26,.9));
+}
+[data-theme=neon].playing .grille { animation: spin 2.4s linear infinite; }
+[data-theme=neon] .vu { background: #000; box-shadow: var(--line); }
+[data-theme=neon] .vu i { background: var(--neon); box-shadow: 0 0 5px var(--neon); }
+[data-theme=neon] .screw { background: transparent; box-shadow: 0 0 0 1.5px var(--neon); }
+[data-theme=neon] .switch { background: #000; box-shadow: var(--wline); }
+[data-theme=neon] .switch span { background: var(--neon); box-shadow: 0 0 6px var(--neon); }
+[data-theme=neon] .knob-well { background: transparent; box-shadow: var(--line); }
+[data-theme=neon] .knob-scale { background: repeating-conic-gradient(from -135deg, var(--neon) 0 1.2deg, transparent 1.2deg 13.5deg); }
+[data-theme=neon] .knob { background: #000; box-shadow: var(--wline); }
+[data-theme=neon] .knob-inner { background: #000; box-shadow: var(--line); }
+[data-theme=neon] .slit { background: transparent; box-shadow: 0 0 0 1.5px var(--neon); }
+[data-theme=neon] .pointer { background: var(--neon); box-shadow: 0 0 6px var(--neon); }
+[data-theme=neon] .ghost { opacity: .05; }
+[data-theme=neon] .lcd .glass, [data-theme=neon] .scale::after { background: none; }
+[data-theme=neon] .cover-wrap img { mix-blend-mode: screen; filter: grayscale(1) sepia(1) saturate(4) hue-rotate(-15deg); }
+[data-theme=neon] :is(.lcd, .scale, .cap-block .seg7) { text-shadow: 0 0 6px var(--glow); }
+
+/* =====================================================================
+   TURNTABLE — silver deck, mono screen, speakers become spinning records
+   ===================================================================== */
+[data-theme=turntable] {
+  --ink: #1c1c1c; --ink-soft: #5c5c5c;
+  --lcd-hi: #f1f1ef; --lcd: #e2e2df; --lcd-lo: #cfcfcb;
+  --seg: #141414; --red: #d23a2a;
+  --steel: linear-gradient(180deg, #f4f4f4, #d6d6d6 50%, #bdbdbd);
+}
+[data-theme=turntable] .shell { background: linear-gradient(90deg, #8f8f8f, #e9e9e9 45%, #9a9a9a); border-color: #fff; box-shadow: inset 0 0 0 1px rgba(0,0,0,.25), 0 16px 28px rgba(0,0,0,.35); }
+[data-theme=turntable] .body {
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,.18) 0 1px, rgba(0,0,0,.03) 1px 2px, transparent 2px 3px), linear-gradient(180deg, #ededed, #d2d2d2 55%, #bcbcbc);
+  box-shadow: inset 0 1px 0 #fff, inset 0 0 0 1px rgba(0,0,0,.15), 0 0 0 1px rgba(0,0,0,.3);
+}
+[data-theme=turntable] .cap.cream.sq { background: var(--steel); box-shadow: 0 0 0 1px #8a8a8a, 0 2px 0 #8a8a8a, inset 0 1px 0 #fff; }
+[data-theme=turntable] .lamp.on { background: radial-gradient(circle at 40% 35%, #ffc6bf, #ff3a2c 50%, #a3150b); box-shadow: 0 0 0 2px #cfcfcf, 0 0 0 3px #8a8a8a, 0 0 10px 3px rgba(255,50,30,.6); }
+[data-theme=turntable] .bezel { background: linear-gradient(180deg, #c9c9c9, #f2f2f2); }
+[data-theme=turntable] :is(.lcd, .scale) { background: linear-gradient(180deg, var(--lcd-hi), var(--lcd) 45%, var(--lcd-lo)); }
+[data-theme=turntable] .lcd { box-shadow: 0 0 0 2px #1a1a1a, 0 0 0 3px #8a8a8a, inset 0 0 14px rgba(0,0,0,.18); }
+[data-theme=turntable] .scale { box-shadow: inset 0 0 10px rgba(0,0,0,.15); }
+[data-theme=turntable] .cover-wrap img { filter: grayscale(1) contrast(1.15); }
+[data-theme=turntable] .plate { background: linear-gradient(180deg, #dcdcdc, #b8b8b8); box-shadow: 0 0 0 1px #8a8a8a, 0 2px 0 #9a9a9a, 0 4px 6px rgba(0,0,0,.2), inset 0 1px 0 #fff; }
+[data-theme=turntable] .tuner { box-shadow: 0 0 0 2px #1a1a1a, 0 0 0 3px #efefef, 0 0 0 4px #8a8a8a; }
+[data-theme=turntable] .cap-block { background: #141414; color: #f1f1ef; }
+[data-theme=turntable] .cap-block .seg7 { text-shadow: none; }
+[data-theme=turntable] .tiny-lcd { color: #f1f1ef; }
+[data-theme=turntable] .keybank { box-shadow: 0 0 0 1px #8a8a8a; }
+[data-theme=turntable] .spk { background: var(--steel); box-shadow: 0 0 0 3px #bdbdbd, 0 0 0 4px #8a8a8a, 0 8px 14px rgba(0,0,0,.35); }
+[data-theme=turntable] .grille {
+  width: 104px; height: 104px;
+  background:
+    radial-gradient(circle, #f5f5f5 0 1.5px, #6a6a6a 2px 2.5px, transparent 3px),
+    radial-gradient(circle, transparent 0 16px, #0d0d0d 16.5px),
+    conic-gradient(from 0deg, #ece6d6 0 50%, #2a2a2a 50% 100%),
+    #111;
+  box-shadow: 0 0 0 1px #000, 0 3px 6px rgba(0,0,0,.5);
+}
+/* grooves + light sheen sit on a pseudo-element so the label stays clean */
+[data-theme=turntable] .grille { position: relative; }
+[data-theme=turntable] .grille::after {
+  content: ''; position: absolute; inset: 0; border-radius: 50%;
+  background:
+    conic-gradient(from 30deg, transparent, rgba(255,255,255,.12) 6%, transparent 14%, transparent 50%, rgba(255,255,255,.1) 56%, transparent 64%),
+    repeating-radial-gradient(circle, rgba(255,255,255,.05) 0 1px, transparent 1px 2.5px);
+  -webkit-mask: radial-gradient(circle, transparent 0 17px, #000 17.5px);
+}
+[data-theme=turntable].playing .grille { animation: spin 1.8s linear infinite; }
+[data-theme=turntable] .vu { background: #141414; box-shadow: inset 0 2px 4px rgba(0,0,0,.8), 0 1px 0 #fff; }
+[data-theme=turntable] .vu i { background: linear-gradient(0deg, #8a8a8a, #fff); box-shadow: none; }
+[data-theme=turntable] .screw { background: radial-gradient(circle at 40% 35%, #fff, #9a9a9a); }
+[data-theme=turntable] .switch { background: linear-gradient(180deg, #9a9a9a, #e0e0e0); box-shadow: inset 0 2px 3px rgba(0,0,0,.4), 0 0 0 1px #7a7a7a, 0 1px 0 #fff; }
+[data-theme=turntable] .knob-well { background: radial-gradient(circle, #cfcfcf 60%, #a9a9a9 68%, #ececec 74%); box-shadow: inset 0 3px 7px rgba(0,0,0,.35), 0 1px 0 #fff; }
+[data-theme=turntable] .knob { background: repeating-conic-gradient(from 0deg, rgba(255,255,255,.35) 0 2deg, transparent 2deg 6deg), radial-gradient(circle at 45% 35%, #fafafa, #b9b9b9 60%, #8a8a8a); box-shadow: 0 0 0 2px #6a6a6a, 0 6px 12px rgba(0,0,0,.35); }
+[data-theme=turntable] .knob-inner { background: radial-gradient(circle at 45% 35%, #f2f2f2, #a3a3a3 70%); box-shadow: 0 0 0 1px #6a6a6a, inset 0 1px 2px rgba(255,255,255,.8); }
+[data-theme=turntable] .slit { background: #2a2a2a; }
+[data-theme=turntable] .pointer { background: var(--red); }

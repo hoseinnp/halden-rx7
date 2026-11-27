@@ -1,0 +1,38 @@
+{
+  "name": "halden-rx7",
+  "productName": "HALDEN RX-7",
+  "version": "1.0.0",
+  "description": "Retro desktop music player",
+  "main": "main.mjs",
+  "scripts": {
+    "start": "electron .",
+    "test": "node test.js",
+    "dist": "electron-builder --win portable"
+  },
+  "build": {
+    "appId": "local.halden.rx7",
+    "files": [
+      "main.mjs",
+      "preload.js",
+      "index.html",
+      "style.css",
+      "themes.css",
+      "library.css",
+      "library.js",
+      "renderer.js",
+      "logic.js",
+      "fonts/**"
+    ],
+    "win": {
+      "target": "portable"
+    }
+  },
+  "dependencies": {
+    "music-metadata": "^13.0.1"
+  },
+  "devDependencies": {
+    "dseg": "^0.46.0",
+    "electron": "^45.5.0",
+    "electron-builder": "^26.18.0"
+  }
+}
