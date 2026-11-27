@@ -306,8 +306,8 @@ body.drop .shell { box-shadow: 0 0 0 3px var(--lcd), 0 14px 26px rgba(0,0,0,.35)
 .shell { transform: perspective(1400px) rotateX(calc(var(--ty, 0) * -3deg)) rotateY(calc(var(--tx, 0) * 4deg)); transition: transform .3s ease-out; }
 .bezel  { translate: calc(var(--tx, 0) * 2px) calc(var(--ty, 0) * 2px); }
 .plate  { translate: calc(var(--tx, 0) * 3px) calc(var(--ty, 0) * 3px); }
-.speakers, .knob-well { translate: calc(var(--tx, 0) * 4.5px) calc(var(--ty, 0) * 4.5px); }
-:is(.bezel, .plate, .speakers, .knob-well) { transition: translate .3s ease-out; }
+.spk, .center-col, .knob-well { translate: calc(var(--tx, 0) * 4.5px) calc(var(--ty, 0) * 4.5px); }
+:is(.bezel, .plate, .spk, .center-col, .knob-well) { transition: translate .3s ease-out; }
 .glare {
   position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 5;
   background: radial-gradient(circle at calc(50% + var(--tx, 0) * 45%) calc(35% + var(--ty, 0) * 45%), rgba(255,255,255,.16), transparent 45%);
@@ -320,6 +320,6 @@ body.drop .shell { box-shadow: 0 0 0 3px var(--lcd), 0 14px 26px rgba(0,0,0,.35)
 }
 @keyframes sweep { 0%, 70% { left: -40%; } 100% { left: 120%; } }
 @media (prefers-reduced-motion: reduce) {
-  .shell, .bezel, .plate, .speakers, .knob-well { transform: none; translate: none; }
+  .shell, .bezel, .plate, .spk, .center-col, .knob-well { transform: none; translate: none; }
   .lcd .glass::after { display: none; }
 }

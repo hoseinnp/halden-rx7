@@ -17,6 +17,7 @@
       "index.html",
       "style.css",
       "themes.css",
+      "layouts.css",
       "library.css",
       "library.js",
       "renderer.js",

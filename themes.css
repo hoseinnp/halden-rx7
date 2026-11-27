@@ -20,7 +20,7 @@
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* =====================================================================
-   CLEAR — smoked see-through plastic, silver buttons, spinning discs
+   CLEAR — smoked see-through plastic, silver buttons, silver buttons
    ===================================================================== */
 [data-theme=clear] {
   --ink: #e2e3e7; --ink-soft: #9b9ea6;
@@ -69,18 +69,6 @@
 }
 [data-theme=clear] .key.solo, [data-theme=clear] .sqkey { box-shadow: 0 0 0 2px #1a1b1e, 0 0 0 3px rgba(255,255,255,.2), inset 0 1px 0 #fff, inset 0 -3px 0 #7c7e83; }
 [data-theme=clear] .sqkey { border-radius: 50%; }
-[data-theme=clear] .spk {
-  background: conic-gradient(from 200deg, #6f7278, #2b2c30, #5f6268, #1e1f22, #6f7278);
-  box-shadow: 0 0 0 4px rgba(255,255,255,.06), 0 0 0 5px rgba(255,255,255,.18), 0 6px 12px rgba(0,0,0,.5);
-}
-[data-theme=clear] .grille {
-  background:
-    radial-gradient(circle, #121315 0 8px, #d7d9dd 9px 12px, #8c8f95 13px 14px, transparent 15px),
-    radial-gradient(circle, transparent 0 46px, rgba(255,255,255,.35) 47px, transparent 49px),
-    conic-gradient(from 0deg, #cfd3d9, #aee9ff, #efc9ff, #fff0b0, #cfd3d9, #b9f2e4, #e2c4ff, #ffe1b8, #cfd3d9);
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,.4), 0 0 8px rgba(0,0,0,.5);
-}
-[data-theme=clear].playing .grille { animation: spin 1.6s linear infinite; }
 [data-theme=clear] .vu { background: #0b0b0d; box-shadow: inset 0 2px 4px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.15); }
 [data-theme=clear] .vu i { background: linear-gradient(0deg, #9da0a6, #fff); box-shadow: 0 0 3px rgba(255,255,255,.5); }
 [data-theme=clear] .screw { background: radial-gradient(circle at 40% 35%, #f5f5f7, #85878c); box-shadow: 0 0 0 1px #111; }
@@ -99,7 +87,6 @@
   --ink: #d4d4d6; --ink-soft: #8c8c90;
   --lcd-hi: #10243c; --lcd: #08162a; --lcd-lo: #030912;
   --seg: #7fd3ff; --glow: rgba(70,180,255,.7); --red: #e8342b;
-  --gold-ring: conic-gradient(from 200deg, #f6dfae, #8a6631, #f9e6bf, #76572a, #e8c98d, #8a6631, #f6dfae);
 }
 [data-theme=deck] .shell {
   background: linear-gradient(90deg, #0b0b0c, #2b2b2e 50%, #0b0b0c);
@@ -128,8 +115,6 @@
   box-shadow: 0 0 0 2px #000, 0 0 0 3px #3b3b3f, inset 0 1px 0 #fff3d8, inset 0 -3px 0 #6a4c22;
 }
 [data-theme=deck] .key.solo.down, [data-theme=deck] .sqkey.down { box-shadow: 0 0 0 2px #000, 0 0 0 3px #3b3b3f, inset 0 2px 3px rgba(0,0,0,.5); filter: brightness(.9); }
-[data-theme=deck] .spk { background: var(--gold-ring); box-shadow: 0 0 0 4px #0b0b0c, 0 0 0 5px #3b3b3f, 0 6px 12px rgba(0,0,0,.6); }
-[data-theme=deck] .grille { background: radial-gradient(circle, #3a3a3e 0 .8px, transparent 1.2px) 0 0 / 3.4px 3.4px, radial-gradient(circle, #1a1a1c, #050506 75%); }
 [data-theme=deck] .vu { background: #030304; box-shadow: inset 0 2px 4px rgba(0,0,0,.9), 0 0 0 1px #3b3b3f; }
 [data-theme=deck] .vu i { background: linear-gradient(0deg, #2d8bff, #63d1ff 60%, #ffb35c); box-shadow: 0 0 4px rgba(80,180,255,.6); }
 [data-theme=deck] .screw { background: radial-gradient(circle at 40% 35%, #f6dfae, #76572a); box-shadow: 0 0 0 1px #000; }
@@ -188,17 +173,6 @@
 [data-theme=graphite] .key.solo, [data-theme=graphite] .sqkey { box-shadow: 0 0 0 2px #0b0b0c, 0 0 0 3px #55595e, inset 0 1px 0 rgba(255,255,255,.18), inset 0 -3px 0 #0a0909; }
 [data-theme=graphite] .sqkey { background: linear-gradient(180deg, #3a2414, #1b0f07); }
 [data-theme=graphite] .sqkey em { height: 4px; background: #ff9a40; box-shadow: 0 0 8px 2px rgba(255,140,50,.8); }
-[data-theme=graphite] .spk {
-  border-radius: 14px;
-  background: var(--bolts), linear-gradient(180deg, #34373b, #1f2124);
-  box-shadow: inset 0 0 0 1px #0b0b0c, inset 0 0 0 2px #55595e, 0 4px 8px rgba(0,0,0,.5);
-}
-[data-theme=graphite] .grille {
-  background:
-    radial-gradient(ellipse at 36% 30%, rgba(255,255,255,.22), transparent 32%),
-    radial-gradient(circle, #050506 0 14px, #2c2f33 15px 18px, #0b0c0d 19px 27px, #3b3e42 28px 30px, #101113 31px 42px, #5b5f64 43px 46px, #1a1b1d 47px 50px);
-  box-shadow: 0 0 0 2px #0b0b0c, 0 3px 6px rgba(0,0,0,.6);
-}
 [data-theme=graphite] .vu { border-radius: 2px; background: #060607; box-shadow: inset 0 2px 4px rgba(0,0,0,.9), 0 0 0 1px #55595e; }
 [data-theme=graphite] .vu i { background: linear-gradient(0deg, #c8561a, #ffaa55); box-shadow: 0 0 5px rgba(255,130,40,.8); }
 [data-theme=graphite] .screw { background: radial-gradient(circle at 40% 35%, #9a9ea4, #3b3e42); box-shadow: 0 0 0 1px #0b0b0c; }
@@ -247,17 +221,6 @@
 [data-theme=silver] .key em { width: 8px; height: 4px; margin-left: -4px; border-radius: 2px; background: #7a1d18; opacity: 1; }
 [data-theme=silver] .key.down em { background: #ff3a2c; box-shadow: 0 0 6px 1px rgba(255,50,30,.9); }
 [data-theme=silver] .key.solo, [data-theme=silver] .sqkey { box-shadow: 0 0 0 2px #121010, 0 0 0 3px #7d8086, inset 0 1px 0 rgba(255,255,255,.18), inset 0 -3px 0 #0a0909; }
-[data-theme=silver] .spk {
-  background: repeating-conic-gradient(from 0deg, transparent 0 11deg, rgba(40,42,46,.55) 11deg 13deg), var(--chrome);
-  box-shadow: 0 0 0 4px #c9ccd0, 0 0 0 5px #8d9096, 0 0 0 8px #e2e4e7, 0 6px 10px rgba(0,0,0,.3);
-}
-[data-theme=silver] .grille {
-  width: 96px; height: 96px;
-  background:
-    radial-gradient(ellipse at 40% 32%, rgba(255,255,255,.25), transparent 30%),
-    radial-gradient(circle, #4b4e53 0 13px, #17181b 14px 16px, #2f3236 17px 33px, #0f1012 34px 39px, #575a5f 40px 42px, #1d1e21 43px 48px);
-  box-shadow: 0 0 0 2px #2a2c30, inset 0 0 6px rgba(0,0,0,.6);
-}
 [data-theme=silver] .vu { background: linear-gradient(180deg, #f8d653, #e0ad22); box-shadow: inset 0 2px 4px rgba(120,80,0,.45), 0 0 0 2px #2a2c30, 0 1px 0 3px #f5f6f7; }
 [data-theme=silver] .vu i { background: #2a1e02; box-shadow: none; opacity: .85; }
 [data-theme=silver] .screw { background: radial-gradient(circle at 40% 35%, #3a3c40, #0b0c0e); box-shadow: 0 0 0 1px #8d9096, 0 1px 0 #fff; }
@@ -314,19 +277,6 @@
 [data-theme=neon] :is(.key:active, .key.down, .key.solo.down, .sqkey.down) { box-shadow: var(--line); transform: none; background: #0b0603; }
 [data-theme=neon] .key.down em { background: var(--neon); box-shadow: 0 0 6px var(--neon); }
 [data-theme=neon] .marks i { background: var(--neon); }
-/* speakers become cassette reels */
-[data-theme=neon] .spk { background: transparent; box-shadow: var(--line); }
-[data-theme=neon] .grille {
-  width: 86px; height: 86px;
-  background:
-    radial-gradient(circle, #000 0 15px, var(--neon) 15.5px 17px, transparent 17.5px),
-    repeating-conic-gradient(from 0deg, var(--neon) 0 8deg, transparent 8deg 60deg),
-    radial-gradient(circle, transparent 0 25.5px, var(--neon) 25.5px 27px, transparent 27.5px 41px, var(--neon) 41.5px 43px, transparent 43.5px);
-  -webkit-mask: radial-gradient(circle, #000 0 27px, transparent 27.5px 40.5px, #000 41px);
-  box-shadow: none;
-  filter: drop-shadow(0 0 4px rgba(255,122,26,.9));
-}
-[data-theme=neon].playing .grille { animation: spin 2.4s linear infinite; }
 [data-theme=neon] .vu { background: #000; box-shadow: var(--line); }
 [data-theme=neon] .vu i { background: var(--neon); box-shadow: 0 0 5px var(--neon); }
 [data-theme=neon] .screw { background: transparent; box-shadow: 0 0 0 1.5px var(--neon); }
@@ -344,7 +294,7 @@
 [data-theme=neon] :is(.lcd, .scale, .cap-block .seg7) { text-shadow: 0 0 6px var(--glow); }
 
 /* =====================================================================
-   TURNTABLE — silver deck, mono screen, speakers become spinning records
+   TURNTABLE — silver deck, mono screen, studio-monitor speakers
    ===================================================================== */
 [data-theme=turntable] {
   --ink: #1c1c1c; --ink-soft: #5c5c5c;
@@ -370,26 +320,6 @@
 [data-theme=turntable] .cap-block .seg7 { text-shadow: none; }
 [data-theme=turntable] .tiny-lcd { color: #f1f1ef; }
 [data-theme=turntable] .keybank { box-shadow: 0 0 0 1px #8a8a8a; }
-[data-theme=turntable] .spk { background: var(--steel); box-shadow: 0 0 0 3px #bdbdbd, 0 0 0 4px #8a8a8a, 0 8px 14px rgba(0,0,0,.35); }
-[data-theme=turntable] .grille {
-  width: 104px; height: 104px;
-  background:
-    radial-gradient(circle, #f5f5f5 0 1.5px, #6a6a6a 2px 2.5px, transparent 3px),
-    radial-gradient(circle, transparent 0 16px, #0d0d0d 16.5px),
-    conic-gradient(from 0deg, #ece6d6 0 50%, #2a2a2a 50% 100%),
-    #111;
-  box-shadow: 0 0 0 1px #000, 0 3px 6px rgba(0,0,0,.5);
-}
-/* grooves + light sheen sit on a pseudo-element so the label stays clean */
-[data-theme=turntable] .grille { position: relative; }
-[data-theme=turntable] .grille::after {
-  content: ''; position: absolute; inset: 0; border-radius: 50%;
-  background:
-    conic-gradient(from 30deg, transparent, rgba(255,255,255,.12) 6%, transparent 14%, transparent 50%, rgba(255,255,255,.1) 56%, transparent 64%),
-    repeating-radial-gradient(circle, rgba(255,255,255,.05) 0 1px, transparent 1px 2.5px);
-  -webkit-mask: radial-gradient(circle, transparent 0 17px, #000 17.5px);
-}
-[data-theme=turntable].playing .grille { animation: spin 1.8s linear infinite; }
 [data-theme=turntable] .vu { background: #141414; box-shadow: inset 0 2px 4px rgba(0,0,0,.8), 0 1px 0 #fff; }
 [data-theme=turntable] .vu i { background: linear-gradient(0deg, #8a8a8a, #fff); box-shadow: none; }
 [data-theme=turntable] .screw { background: radial-gradient(circle at 40% 35%, #fff, #9a9a9a); }
@@ -515,27 +445,6 @@
 }
 [data-theme=nova] .key.down em { background: var(--b); box-shadow: 0 0 8px var(--b), 0 0 2px #fff; }
 
-/* speakers: holographic rings with dot-matrix cores that glow on the bass */
-[data-theme=nova] .spk {
-  position: relative;
-  background: radial-gradient(circle, #050a14 0 54px, transparent 55px), var(--holo-ring);
-  animation: holo 6s linear infinite;
-  box-shadow: 0 0 0 4px rgba(10,16,30,.9), 0 0 0 5px rgba(57,243,255,.25), 0 12px 22px rgba(0,0,0,.6), 0 0 calc(10px + var(--pumpglow)) rgba(122,92,255,.55);
-}
-[data-theme=nova] .spk::after {
-  content: ''; position: absolute; inset: 9px; border-radius: 50%; pointer-events: none;
-  background: repeating-conic-gradient(from 0deg, rgba(57,243,255,.8) 0 6deg, transparent 6deg 20deg);
-  -webkit-mask: radial-gradient(circle, transparent 0 48px, #000 48.5px 50px, transparent 50.5px);
-}
-[data-theme=nova].playing .spk::after { animation: spin 7s linear infinite; }
-[data-theme=nova] .grille {
-  width: 88px; height: 88px;
-  background:
-    radial-gradient(circle, rgba(126,248,255,.9) 0 3px, rgba(57,243,255,.25) 4px 9px, transparent 12px),
-    radial-gradient(circle, rgba(57,243,255,.55) 0 .9px, transparent 1.5px) 0 0 / 5px 5px,
-    radial-gradient(circle, #0c1a33, #050a14 70%);
-  box-shadow: 0 0 0 1px rgba(57,243,255,.35), inset 0 0 calc(10px + var(--pumpglow)) rgba(57,243,255,.5);
-}
 [data-theme=nova] .vu { background: rgba(4,8,16,.9); border-radius: 6px; box-shadow: 0 0 0 1px rgba(57,243,255,.4), inset 0 0 8px rgba(0,0,0,.8); }
 [data-theme=nova] .vu i { background: linear-gradient(0deg, var(--a), var(--c) 60%, var(--b)); box-shadow: 0 0 6px rgba(57,243,255,.6); }
 [data-theme=nova] .screw { background: radial-gradient(circle, var(--a), #0a3a44); box-shadow: 0 0 8px var(--a); }
@@ -560,5 +469,5 @@
 [data-theme=nova] .pointer { background: #fff; box-shadow: 0 0 8px var(--a), 0 0 2px #fff; }
 [data-theme=nova] .glare { mix-blend-mode: screen; background: radial-gradient(circle at calc(50% + var(--tx, 0) * 45%) calc(35% + var(--ty, 0) * 45%), rgba(150,220,255,.10), transparent 45%); }
 @media (prefers-reduced-motion: reduce) {
-  [data-theme=nova] .shell, [data-theme=nova] .spk, [data-theme=nova].playing .spk::after { animation: none; }
+  [data-theme=nova] .shell { animation: none; }
 }

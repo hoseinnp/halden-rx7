@@ -1,0 +1,233 @@
+/* Per-theme layouts and speaker shapes. Cream keeps the original flow layout from style.css.
+   Every other theme turns the body into a grid and places the parts by name:
+   top · screen · plate · spkL · meter · spkR · rep · knob · lst (· l1 for the label row). */
+
+:where(body[data-theme]:not([data-theme=cream])) .body {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-content: space-between; align-items: center; justify-items: center;
+}
+:where(body[data-theme]:not([data-theme=cream])) :is(.speakers, .bottom-row) { display: contents; }
+:where(body[data-theme]:not([data-theme=cream])) .label-row { display: none; }
+:where(body[data-theme]:not([data-theme=cream])) :is(.top, .main-bezel, .plate) { justify-self: stretch; min-width: 0; }
+:where(body[data-theme]:not([data-theme=cream])) .top { grid-area: top; }
+:where(body[data-theme]:not([data-theme=cream])) .main-bezel { grid-area: screen; }
+:where(body[data-theme]:not([data-theme=cream])) .plate { grid-area: plate; }
+:where(body[data-theme]:not([data-theme=cream])) .spk-l { grid-area: spkL; }
+:where(body[data-theme]:not([data-theme=cream])) .spk-r { grid-area: spkR; }
+:where(body[data-theme]:not([data-theme=cream])) .center-col { grid-area: meter; }
+:where(body[data-theme]:not([data-theme=cream])) .rep-ctl { grid-area: rep; }
+:where(body[data-theme]:not([data-theme=cream])) .knob-well { grid-area: knob; }
+:where(body[data-theme]:not([data-theme=cream])) .lst-ctl { grid-area: lst; }
+/* short screens drop the album line and cover */
+:where([data-theme=graphite], [data-theme=neon], [data-theme=turntable]) :is(.info.dim, .cover-wrap) { display: none; }
+:where([data-theme=graphite], [data-theme=neon], [data-theme=turntable]) .big { font-size: 22px; }
+
+/* =====================================================================
+   NOVA — speakers flank the knob like a face; controls at the bottom.
+   Speakers: holographic hexagons with a hex dot-matrix core.
+   ===================================================================== */
+[data-theme=nova] .body {
+  grid-template-areas: "top top top" "screen screen screen" "spkL knob spkR" "rep meter lst" "plate plate plate";
+}
+[data-theme=nova] .spk {
+  position: relative; width: 100px; height: 112px; border-radius: 0; background: none; box-shadow: none;
+  filter: drop-shadow(0 0 calc(6px + var(--pumpglow)) rgba(122,92,255,.6)) drop-shadow(0 10px 12px rgba(0,0,0,.5));
+}
+[data-theme=nova] .spk::before, [data-theme=nova] .spk::after {
+  content: ''; position: absolute; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+[data-theme=nova] .spk::before { inset: 0; background: conic-gradient(from 200deg, #39f3ff, #7a5cff, #ff3df2, #ffd36b, #39f3ff); }
+[data-theme=nova] .spk::after { inset: 3px; background: #050a14; }
+[data-theme=nova] .grille {
+  position: relative; z-index: 1; width: 82px; height: 92px; border-radius: 0;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  background:
+    radial-gradient(circle, rgba(126,248,255,.9) 0 3px, rgba(57,243,255,.25) 4px 9px, transparent 12px),
+    radial-gradient(circle, rgba(57,243,255,.6) 0 .9px, transparent 1.4px) 0 0 / 5px 8.66px,
+    radial-gradient(circle, rgba(57,243,255,.6) 0 .9px, transparent 1.4px) 2.5px 4.33px / 5px 8.66px,
+    radial-gradient(circle, #0c1a33, #050a14 70%);
+  box-shadow: inset 0 0 calc(8px + var(--pumpglow)) rgba(57,243,255,.6);
+}
+
+/* =====================================================================
+   CLEAR — CD player: silver drivers under the screen, big CD at the bottom
+   with the volume dial as its hub. Speakers: rounded glass tiles.
+   ===================================================================== */
+[data-theme=clear] .body {
+  grid-template-areas: "top top top" "screen screen screen" "spkL meter spkR" "plate plate plate" "rep knob lst";
+}
+[data-theme=clear] .main-lcd { height: 150px; }
+[data-theme=clear] .spk {
+  width: 104px; height: 104px; border-radius: 30px;
+  background: linear-gradient(160deg, rgba(255,255,255,.16), rgba(255,255,255,.03));
+  box-shadow: 0 0 0 1px rgba(255,255,255,.25), inset 0 1px 0 rgba(255,255,255,.3), 0 8px 16px rgba(0,0,0,.5);
+}
+[data-theme=clear] .grille {
+  width: 78px; height: 78px;
+  background: repeating-radial-gradient(circle, rgba(255,255,255,.16) 0 1px, transparent 1px 2.2px), radial-gradient(circle at 45% 35%, #fbfbfc, #c4c6ca 55%, #85878c);
+  box-shadow: 0 0 0 1px #1a1b1e, 0 4px 10px rgba(0,0,0,.6), inset 0 1px 0 #fff;
+}
+[data-theme=clear] .knob-well {
+  zoom: 1.1;
+  background:
+    radial-gradient(circle, transparent 0 44px, rgba(255,255,255,.4) 45px, transparent 47px 70px, rgba(255,255,255,.3) 71px, transparent 73px),
+    conic-gradient(from 0deg, #cfd3d9, #aee9ff, #efc9ff, #fff0b0, #cfd3d9, #b9f2e4, #e2c4ff, #ffe1b8, #cfd3d9);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.35), 0 12px 26px rgba(0,0,0,.6);
+}
+[data-theme=clear] .knob-scale { display: none; }
+[data-theme=clear] .knob { zoom: .72; }
+
+/* =====================================================================
+   DECK — big jog wheel with gold speaker capsules on both sides.
+   Speakers: tall gold capsules with vent slots.
+   ===================================================================== */
+[data-theme=deck] .body {
+  grid-template-areas: "top top top" "screen screen screen" "plate plate plate" "spkL knob spkR" "rep knob lst" ". meter .";
+}
+[data-theme=deck] .knob-well { zoom: 1.3; }
+[data-theme=deck] .spk {
+  width: 58px; height: 128px; border-radius: 29px;
+  background: linear-gradient(90deg, #76572a, #f6dfae 38%, #d6ad68 55%, #8a6631);
+  box-shadow: 0 0 0 3px #0b0b0c, 0 0 0 4px #3b3b3f, 0 6px 12px rgba(0,0,0,.6);
+}
+[data-theme=deck] .grille {
+  width: 42px; height: 112px; border-radius: 21px;
+  background: repeating-linear-gradient(0deg, #000 0 4px, #2c2c30 4px 6px);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,.9), 0 0 0 1px #4a3514;
+}
+
+/* =====================================================================
+   GRAPHITE — big lens on top, a second lens beside a small knob below.
+   Speakers: armoured octagons with camera-lens cores.
+   ===================================================================== */
+[data-theme=graphite] .body {
+  grid-template-areas: "top top top" "spkL spkL spkL" "screen screen screen" "plate plate plate" "rep spkR knob" "lst meter .";
+}
+[data-theme=graphite] .main-lcd { height: 120px; }
+[data-theme=graphite] .knob-well { zoom: .72; }
+[data-theme=graphite] .spk-l { zoom: 1.15; }
+[data-theme=graphite] .spk-r { zoom: .85; }
+[data-theme=graphite] .spk {
+  width: 118px; height: 118px; border-radius: 0;
+  clip-path: polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%);
+  background:
+    radial-gradient(circle at 50% 8px, #8a8e94 0 2.5px, #111 3px 4px, transparent 4.5px),
+    radial-gradient(circle at 50% calc(100% - 8px), #8a8e94 0 2.5px, #111 3px 4px, transparent 4.5px),
+    radial-gradient(circle at 8px 50%, #8a8e94 0 2.5px, #111 3px 4px, transparent 4.5px),
+    radial-gradient(circle at calc(100% - 8px) 50%, #8a8e94 0 2.5px, #111 3px 4px, transparent 4.5px),
+    linear-gradient(135deg, #575b61, #26282b 55%, #1a1b1d);
+  box-shadow: none;
+}
+[data-theme=graphite] .grille {
+  width: 90px; height: 90px;
+  background:
+    radial-gradient(ellipse at 36% 30%, rgba(255,255,255,.22), transparent 32%),
+    radial-gradient(circle, #050506 0 12px, #2c2f33 13px 16px, #0b0c0d 17px 24px, #3b3e42 25px 27px, #101113 28px 38px, #5b5f64 39px 42px, #1a1b1d 43px);
+  box-shadow: 0 0 0 2px #0b0b0c, 0 0 calc(var(--pumpglow) * .6) rgba(255,130,40,.6);
+}
+
+/* =====================================================================
+   SILVER — speakers sit right under the screen around the level meter,
+   dial in the middle, controls at the bottom. Speakers: oval car woofers.
+   ===================================================================== */
+[data-theme=silver] .body {
+  grid-template-areas: "top top top" "screen screen screen" "spkL meter spkR" "l1 l1 l1" "rep knob lst" "plate plate plate";
+}
+[data-theme=silver] .label-row:not(.slim) { display: flex; grid-area: l1; justify-self: stretch; margin: -6px 0 0; }
+[data-theme=silver] .main-lcd { height: 150px; }
+[data-theme=silver] .spk {
+  zoom: .78; width: 150px; height: 104px; border-radius: 50%;
+  background: repeating-conic-gradient(from 0deg, transparent 0 11deg, rgba(40,42,46,.5) 11deg 13deg), conic-gradient(from 200deg, #fbfbfc, #8d9096, #eef0f2, #6d7075, #f7f8f9, #9a9da2, #fbfbfc);
+  box-shadow: 0 0 0 4px #c9ccd0, 0 0 0 5px #8d9096, 0 6px 10px rgba(0,0,0,.3);
+}
+[data-theme=silver] .grille {
+  width: 128px; height: 84px;
+  background:
+    radial-gradient(ellipse at 40% 30%, rgba(255,255,255,.25), transparent 30%),
+    radial-gradient(ellipse, #4b4e53 0 12%, #17181b 13% 17%, #2f3236 18% 54%, #0f1012 55% 64%, #575a5f 65% 70%, #1d1e21 71%);
+  box-shadow: 0 0 0 2px #2a2c30, inset 0 0 6px rgba(0,0,0,.6);
+}
+
+/* =====================================================================
+   NEON — speakers become reels in a cassette outline, transport under it,
+   song info below. Speakers: toothed reels (still, they only pulse).
+   ===================================================================== */
+[data-theme=neon] .body {
+  grid-template-areas: "top top top" "spks spks spks" "plate plate plate" "screen screen screen" "rep knob lst";
+}
+[data-theme=neon] .speakers {
+  display: grid; grid-area: spks; justify-self: stretch; position: relative;
+  margin: 0; padding: 18px 16px 40px; border-radius: 14px; box-shadow: var(--line);
+}
+[data-theme=neon] .speakers::before {
+  content: ''; position: absolute; left: 10px; right: 10px; top: 10px; bottom: 34px; border-radius: 8px; pointer-events: none;
+  box-shadow: 0 0 0 1px rgba(255,122,26,.55);
+}
+[data-theme=neon] .speakers::after {
+  content: ''; position: absolute; left: 24%; right: 24%; bottom: 0; height: 26px; pointer-events: none;
+  border: 1.5px solid var(--neon); border-bottom: 0; border-radius: 4px 4px 0 0;
+  transform: perspective(50px) rotateX(18deg); transform-origin: bottom;
+  background: radial-gradient(circle at 30% 60%, transparent 4px, var(--neon) 4.5px 5.5px, transparent 6px), radial-gradient(circle at 70% 60%, transparent 4px, var(--neon) 4.5px 5.5px, transparent 6px);
+  filter: drop-shadow(0 0 4px var(--neon));
+}
+[data-theme=neon] .speakers > * { grid-area: auto; }
+[data-theme=neon] .main-lcd { height: 120px; }
+[data-theme=neon] .knob-well { zoom: .74; }
+[data-theme=neon] .spk { zoom: .82; background: transparent; box-shadow: var(--line); }
+[data-theme=neon] .grille {
+  width: 86px; height: 86px;
+  background:
+    radial-gradient(circle, #000 0 15px, var(--neon) 15.5px 17px, transparent 17.5px),
+    repeating-conic-gradient(from 0deg, var(--neon) 0 8deg, transparent 8deg 60deg),
+    radial-gradient(circle, transparent 0 25.5px, var(--neon) 25.5px 27px, transparent 27.5px 41px, var(--neon) 41.5px 43px, transparent 43.5px);
+  -webkit-mask: radial-gradient(circle, #000 0 27px, transparent 27.5px 40.5px, #000 41px);
+  box-shadow: none;
+  filter: drop-shadow(0 0 calc(4px + var(--pumpglow, 0px)) rgba(255,122,26,.9));
+}
+[data-theme=neon] { --pumpglow: calc((var(--pump, 1) - 1) * 200px); }
+
+/* =====================================================================
+   TURNTABLE — record platter on top doubles as the volume dial (with a
+   tonearm), screen and controls below. Speakers: studio monitors.
+   ===================================================================== */
+[data-theme=turntable] .body {
+  grid-template-areas: "top top top" "rep knob lst" "screen screen screen" "plate plate plate" "spkL meter spkR";
+}
+[data-theme=turntable] .main-lcd { height: 120px; }
+[data-theme=turntable] .knob-well {
+  zoom: 1.4;
+  background:
+    radial-gradient(circle, transparent 0 66px, #0b0b0b 66.5px 70px, transparent 70.5px),
+    conic-gradient(from 20deg, transparent, rgba(255,255,255,.12) 5%, transparent 13%, transparent 50%, rgba(255,255,255,.09) 55%, transparent 63%),
+    repeating-radial-gradient(circle, #121212 0 1px, #1d1d1d 1px 2.5px);
+  box-shadow: 0 0 0 3px #8a8a8a, 0 0 0 5px #d8d8d8, 0 8px 16px rgba(0,0,0,.4);
+}
+[data-theme=turntable] .knob-well::after {
+  content: ''; position: absolute; right: -16px; top: 4px; width: 5px; height: 104px; border-radius: 3px;
+  background: linear-gradient(90deg, #8c8c8c, #fbfbfb 45%, #a9a9a9);
+  transform: rotate(28deg); transform-origin: top center; box-shadow: 2px 3px 5px rgba(0,0,0,.35);
+}
+[data-theme=turntable] .knob-scale, [data-theme=turntable] .knob-inner, [data-theme=turntable] .pointer { display: none; }
+[data-theme=turntable] .knob {
+  zoom: .48;
+  background: conic-gradient(#ece6d6 0 50%, #2a2a2a 50% 100%);
+  box-shadow: 0 0 0 3px #0b0b0b;
+}
+[data-theme=turntable] .knob::after { content: ''; width: 14px; height: 14px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #fff, #8a8a8a); box-shadow: 0 0 0 2px #333; }
+[data-theme=turntable] .spk {
+  zoom: .78; width: 92px; height: 136px; border-radius: 10px; position: relative;
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 10px;
+  background: linear-gradient(180deg, #2c2c2c, #141414);
+  box-shadow: 0 0 0 1px #000, inset 0 1px 0 rgba(255,255,255,.14), 0 8px 14px rgba(0,0,0,.4);
+}
+[data-theme=turntable] .spk::before {
+  content: ''; position: absolute; top: 12px; left: 50%; width: 30px; height: 30px; margin-left: -15px; border-radius: 50%;
+  background: radial-gradient(circle, #ddd 0 3px, #555 4px 6px, #1a1a1a 7px 11px, #888 12px 13px, #111 14px);
+}
+[data-theme=turntable] .grille {
+  width: 72px; height: 72px;
+  background:
+    radial-gradient(circle at 40% 32%, rgba(255,255,255,.18), transparent 35%),
+    radial-gradient(circle, #e8e8e8 0 9px, #9a9a9a 10px 11px, #2a2a2a 12px 26px, #0d0d0d 27px 31px, #6a6a6a 32px 34px, #1a1a1a 35px);
+  box-shadow: 0 0 0 2px #000;
+}
